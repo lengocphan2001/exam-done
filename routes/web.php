@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::get('/test', function(){
 });
 
 Route::resource('types', TypeController::class);
+Route::resource('questions', QuestionController::class);

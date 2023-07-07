@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TypeRequest;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use TypeService;
 
 class TypeController extends Controller
 {
@@ -11,7 +13,9 @@ class TypeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
+        dd('1');
         return view('admin.types.index');
     }
 
@@ -20,15 +24,21 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.types.create');
+        $data['title'] = 'Thể loại';
+        return view('admin.types.create')->with(['data' => $data]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TypeRequest $request)
     {
-        //
+        dd('1');
+        $data['title'] = 'Thể loại';
+        $data = $request->all();
+        dd($data);
+        Type::create(['name' => $data['name']]);
+        return redirect(route('types.index'))->with(['data' => $data]);
     }
 
     /**
