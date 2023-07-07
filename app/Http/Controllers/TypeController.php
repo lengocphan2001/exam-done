@@ -12,7 +12,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.types.index');
     }
 
     /**
