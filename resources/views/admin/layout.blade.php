@@ -129,21 +129,21 @@
             </ul>
             <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon far fa-bookmark"></i>
               <p>
-                Câu hỏi
+                Thể loại
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="layout/top-nav.html" class="nav-link">
+                <a href="{{ route('types.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{ route('types.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm mới</p>
                 </a>
@@ -152,14 +152,14 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon far fa-credit-card"></i>
               <p>
-                Câu hỏi
+                Đề thi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a href="layout/top-nav.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
