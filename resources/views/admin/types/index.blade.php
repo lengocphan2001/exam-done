@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Page title</h1>
+                    <h1>{{ $data['title'] || '' }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -50,78 +50,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr class="odd">
-                                                    <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary"><i
-                                                                class="far fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-success"><i
-                                                                class="fas fa-edit"></i></button>
-                                                        <button type="button" class="btn btn-danger"><i
-                                                                class="far fa-trash-alt"></i></button>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($data['types'] as $key => $item)
+                                                    <tr class="odd">
+                                                        <td class="dtr-control sorting_1" tabindex="0">
+                                                            {{ $loop->iteration }}</td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary"><i
+                                                                    class="far fa-eye"></i></button>
+                                                            <button type="button" class="btn btn-success"><i
+                                                                    class="fas fa-edit"></i></button>
+                                                            <button type="button" class="btn btn-danger"><i
+                                                                    class="far fa-trash-alt"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+
 
 
                                             </tbody>

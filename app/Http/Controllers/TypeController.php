@@ -13,10 +13,10 @@ class TypeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-
     {
-        // dd('1');
-        return view('admin.types.index');
+        $data['title'] = 'Thể loại';
+        $data['types'] = \App\Services\TypeService::getInstance()->getListTypes();
+        return view('admin.types.index')->with(['data'=> $data]);
     }
 
     /**
@@ -35,7 +35,9 @@ class TypeController extends Controller
     {
         \App\Services\TypeService::getInstance()->create($request);
         $data['title'] = 'Thể loại';
-        return redirect(route('types.index'))->with(['data' => $data]);
+        $data['types'] = \App\Services\TypeService::getInstance()->getListTypes();
+        toastr()->success('Thêm thể loại thành công!');
+        return redirect(route('types.index'))->with(['data', $data]);
     }
 
     /**
