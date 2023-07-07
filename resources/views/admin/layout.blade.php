@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/ekko-lightbox/ekko-lightbox.css') }}">
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -213,10 +216,10 @@
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- Filterizr-->
-<script src="{{asset('plugins/filterizr/jquery.filterizr.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="{{ asset('dist/js/demo.js') }}"></script> --}}
-<!-- Page specific script -->
+<script src="{{ asset('plugins/filterizr/jquery.filterizr.min.js')}}"></script>
+@stack('script')
+
+
 <script>
   $(function () {
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
