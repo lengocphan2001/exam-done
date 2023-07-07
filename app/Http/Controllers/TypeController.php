@@ -15,7 +15,7 @@ class TypeController extends Controller
     public function index()
 
     {
-        dd('1');
+        // dd('1');
         return view('admin.types.index');
     }
 
@@ -33,11 +33,8 @@ class TypeController extends Controller
      */
     public function store(TypeRequest $request)
     {
-        dd('1');
+        \App\Services\TypeService::getInstance()->create($request);
         $data['title'] = 'Thể loại';
-        $data = $request->all();
-        dd($data);
-        Type::create(['name' => $data['name']]);
         return redirect(route('types.index'))->with(['data' => $data]);
     }
 

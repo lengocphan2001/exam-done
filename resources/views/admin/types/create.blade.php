@@ -31,9 +31,13 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên thể loại</label>
-                                    <input type="name" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Nhập tên thể loại">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nhập tên thể loại" name="name">
                                 </div>
+                                @if ($errors->has('name'))
+                                        <div class='text-danger mt-2'>
+                                            * {{ $errors->first('name') }}
+                                        </div>
+                                    @endif
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Tạo thể loại</button>

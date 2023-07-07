@@ -19,9 +19,6 @@ Route::get('/', function () {
     return view('admin.layout');
 });
 
-Route::get('/test', function(){
-    return view('admin.questions.create');
-});
 
 Route::resource('types', TypeController::class);
 Route::resource('questions', QuestionController::class);

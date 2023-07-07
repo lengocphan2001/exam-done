@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class TypeService extends Service{
     public function create(TypeRequest $request){
         $data = $request->all();
-        dd($data);
         Type::create(
             ['name' => $data['name']
             ]
