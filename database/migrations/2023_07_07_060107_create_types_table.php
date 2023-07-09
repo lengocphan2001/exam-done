@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('types', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
-            $table->foreign('type_id')->on('questions')->onDelete('casecade');
             $table->timestamps();
         });
     }

@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('answers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('question_id');
+            $table->id();
+            $table->unsignedBigInteger('question_id');
             $table->string('answer');
             $table->string('image');
             $table->timestamps();
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 
