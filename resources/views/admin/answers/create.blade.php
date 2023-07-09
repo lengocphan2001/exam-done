@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm câu trả lời</h3>
                         </div>
-                        <form action="{{ route('answers.store') }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('answers.store', ['id' => $data['question_id']]) }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

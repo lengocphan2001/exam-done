@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Services\AnswerService;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -26,9 +27,9 @@ class AnswerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        AnswerService::getInstance()->create($request, $id);
     }
 
     /**
