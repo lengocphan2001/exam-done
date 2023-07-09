@@ -87,6 +87,9 @@
                                             </tfoot>
                                         </table>
                                     </div>
+                                    <div class="col">
+                                        <p>Hello</p>
+                                    </div>
                                 </div>
                                 <div class="row">
 
