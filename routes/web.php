@@ -24,4 +24,4 @@ Route::get('/', function () {
 Route::resource('types', TypeController::class);
 Route::resource('questions', QuestionController::class);
 Route::resource('answers', AnswerController::class)->except('store');
-Route::post('/answers/{id}', [AnswerController::class, 'store']);
+Route::post('/answers/{id}', [AnswerController::class, 'store'])->name('answers.store');

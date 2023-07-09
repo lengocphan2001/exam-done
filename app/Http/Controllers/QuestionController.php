@@ -50,7 +50,11 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        $data['title'] = 'Danh sách câu trả lời';
+        $data['question'] = $question;
+        $data['types'] = TypeService::getInstance()->getListTypes();
+        
+        return view('admin.questions.show')->with(['data' => $data]);
     }
 
     /**

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id');
             $table->string('type');
             $table->string('difficulty');
+            $table->string('answer')->nullable();
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->timestamps();
         });

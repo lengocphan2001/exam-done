@@ -62,12 +62,12 @@
                                                         <td>{{ $item->type }}</td>
                                                         <td>{{ $item->difficulty }}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-primary"><i
-                                                                    class="far fa-eye"></i></button>
-                                                            <button type="button" class="btn btn-success"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                            <button type="button" class="btn btn-danger"><i
-                                                                    class="far fa-trash-alt"></i></button>
+                                                            <a class="btn btn-primary" href="{{ route('questions.show', ['question' => $item]) }}"><i
+                                                                    class="far fa-eye"></i></a>
+                                                            <a class="btn btn-success"><i
+                                                                    class="fas fa-edit"></i></a>
+                                                            <a class="btn btn-danger"><i
+                                                                    class="far fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
