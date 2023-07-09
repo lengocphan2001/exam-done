@@ -11,7 +11,7 @@ class QuestionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class QuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['string', 'required', 'min:10', 'unique:questions,name']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.string' => 'Tên câu hỏi không hợp lệ',
+            'name.required' => 'Tên câu hỏi không được để trống',
+            'name.min' => 'Tên câu hỏi tối thiếu 10 ký tự',
+            'name.unique' => 'Tên câu hỏi đã tồn tại'
         ];
     }
 }

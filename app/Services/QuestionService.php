@@ -18,7 +18,7 @@ class QuestionService extends Service{
     }
     public function create(QuestionRequest $request){
         $data = $request->all();
-        Question::create([
+        return Question::create([
             'name' => $data['name'],
             'type_id' => $data['type_id'],
             'type' => Type::where('id', $data['type_id'])->first()->name,

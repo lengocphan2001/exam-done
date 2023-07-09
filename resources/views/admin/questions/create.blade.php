@@ -26,24 +26,29 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm câu hỏi</h3>
                         </div>
-                        <form>
+                        <form action="{{ route('questions.store') }}" enctype="multipart/form-data" method="post">
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên câu hỏi</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Nhập tên câu hỏi" name="name" maxlength="2">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Tên câu hỏi</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="name"></textarea>
                                 </div>
+                                @if ($errors->has('name'))
+                                    <div class='text-danger mt-2'>
+                                        * {{ $errors->first('name') }}
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1">
+                                    <select class="form-control" id="sel1" name="type_id">
                                         @foreach ($data['types'] as $item)
-                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="sel1">Độ khó</label>
-                                    <select class="form-control" id="sel1">
+                                    <select class="form-control" id="sel1" name="difficulty">
                                         <option value="Dễ">Dễ</option>
                                         <option value="Trung bình">Trung bình</option>
                                         <option value="Khó">Khó</option>

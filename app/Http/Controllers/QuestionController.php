@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionRequest;
 use App\Models\Question;
 use App\Services\QuestionService;
 use App\Services\TypeService;
@@ -33,9 +34,15 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
-        //
+        $data['title'] = 'Câu trả lời';
+        $question = QuestionService::getInstance()->create($request);
+        $data['question_id'] = $question->id;
+        toastr()->success('Thêm câu hỏi thành công');
+
+        return view('admin.answers.create')->with(['data' => $data]);
+        
     }
 
     /**
