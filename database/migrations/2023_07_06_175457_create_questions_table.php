@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('type_id');
             $table->string('type');
+            $table->string('difficulty');
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->foreign('type_id')->on('questions')->onDelete('casecade');
             $table->timestamps();
         });
     }

@@ -11658,7 +11658,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Đang hiện _START_ to _END_ trong _TOTAL_ bản ghi",
 	
 	
 			/**

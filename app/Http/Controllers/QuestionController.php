@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Services\QuestionService;
+use App\Services\TypeService;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -12,7 +14,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $data['title'] = 'Câu hỏi';
+        $data['questions'] = QuestionService::getInstance()->getListQuestions();
+        return view('admin.questions.index')->with(['data' => $data]);
     }
 
     /**
@@ -20,7 +24,10 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Câu hỏi';
+        $data['types'] = TypeService::getInstance()->getListTypes();
+
+        return view('admin.questions.create')->with(['data' => $data]);
     }
 
     /**

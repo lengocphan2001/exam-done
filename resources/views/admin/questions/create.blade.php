@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Page title</h1>
+                    <h1>{{ $data['title'] }}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Page title</li>
+                        <li class="breadcrumb-item active">{{ $data['title'] }}</li>
                     </ol>
                 </div>
             </div>
@@ -29,24 +29,27 @@
                         <form>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1">Tên câu hỏi</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter email">
+                                        placeholder="Nhập tên câu hỏi" name="name" maxlength="2">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Password">
+                                    <label for="sel1">Thể loại</label>
+                                    <select class="form-control" id="sel1">
+                                        @foreach ($data['types'] as $item)
+                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
-                                        </div>
-                                    </div>
+                                    <label for="sel1">Độ khó</label>
+                                    <select class="form-control" id="sel1">
+                                        <option value="Dễ">Dễ</option>
+                                        <option value="Trung bình">Trung bình</option>
+                                        <option value="Khó">Khó</option>
+                                    </select>
                                 </div>
+
                             </div>
 
                             <div class="card-footer">
