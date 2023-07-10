@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('duration');
+            $table->string('difficulty');
             $table->timestamps();
         });
     }

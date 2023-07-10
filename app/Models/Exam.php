@@ -12,9 +12,10 @@ class Exam extends Model
     protected $fillable = [
         'name',
         'duration',
+        'difficulty'
     ];
 
-    public function question(){
-        return $this->hasMany(Question::class, 'exam_id');
+    public function questions(){
+        return $this->hasMany(ExamQuestion::class, 'exam_id');
     }
 }
