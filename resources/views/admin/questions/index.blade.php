@@ -67,7 +67,7 @@
                                                                 <a href="{{ route('questions.show', ['question'=>$item]) }}"
                                                                     class="btn btn-info"><i
                                                                     class="far fa-eye"></i></a>
-                                                                <a class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                                <a class="btn btn-success" href="{{ route('questions.edit', ['question' => $item]) }}"><i class="fas fa-edit"></i></a>
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger" type="submit"><i

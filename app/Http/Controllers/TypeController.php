@@ -53,7 +53,10 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $data['title'] = 'Thể loại';
+        $data['type'] = $type;
+
+        return view('admin.types.edit')->with(['data' => $data]);
     }
 
     /**
@@ -61,7 +64,13 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $type->update([
+            'name' => $request->get('name')
+        ]);
+        $data['title'] = 'Thể loại';
+        $data['types'] = \App\Services\TypeService::getInstance()->getListTypes();
+        toastr()->success('Chỉnh sửa thể loại thành công!');
+        return redirect(route('types.index'))->with(['data', $data]);
     }
 
     /**
@@ -69,6 +78,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        toastr()->success('Xóa thể loại thành công!');
+        return redirect()->back();
     }
 }

@@ -56,10 +56,15 @@
                                                             {{ $loop->iteration }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>
-                                                            <button type="button" class="btn btn-success"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                            <button type="button" class="btn btn-danger"><i
+                                                            <form action="{{ route('types.destroy', ['type' => $item]) }}"
+                                                                method="POST">
+                                                                <a class="btn btn-success" href="{{ route('types.edit', ['type' => $item]) }}"><i class="fas fa-edit"></i></a>
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger" type="submit"><i
                                                                     class="far fa-trash-alt"></i></button>
+                                                            </form>
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

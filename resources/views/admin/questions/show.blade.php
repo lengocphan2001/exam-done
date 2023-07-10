@@ -46,15 +46,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
+
                                 <label for="sel1">Độ khó</label>
                                 <select class="form-control" id="sel1" name="difficulty" disabled>
                                     <option value="Dễ"
-                                        selected="{{ 'Dễ' == $data['question']->difficulty ? 'selected' : '' }}">Dễ</option>
+                                        selected="{{ $data['question']->difficulty === "Dễ" ? 'selected' : '' }}">Dễ</option>
                                     <option value="Trung bình"
-                                        selected="{{ 'Trung bình' == $data['question']->difficulty ? 'selected' : '' }}">
+                                        selected="{{ $data['question']->difficulty === "Trung bình" ? 'selected' : '' }}">
                                         Trung bình</option>
                                     <option value="Khó"
-                                        selected="{{ 'Khó' == $data['question']->difficulty ? 'selected' : '' }}">Khó
+                                        selected="{{ $data['question']->difficulty === "Khó" ? 'selected' : '' }}">Khó
                                     </option>
                                 </select>
                             </div>
@@ -64,7 +65,7 @@
                 </div>
                 <div class="col-6">
 
-                    <div class="card">
+                    <div class="card card-primary">
 
                         <div class="card-header">
                             <h3 class="card-title">Danh sách câu trả lời</h3>
@@ -97,8 +98,8 @@
                                                     <tr class="col">
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             {{ $loop->iteration }}</td>
-                                                        <td>{{ $item->answer || '' }}</td>
-                                                        <td> <img src="{{ $item->image || '' }}" alt="Ảnh lỗi"></td>
+                                                        <td>{{ $item->answer }}</td>
+                                                        <td> <img src="{{ asset($item->image) }}" alt="Ảnh lỗi" class="img-thumbnail img-rounded" style="width: 60px; height: 60px;"></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -136,7 +137,7 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    <script>
+    {{-- <script>
         $(function() {
             $("#example1").DataTable({
                 "responsive": true,
@@ -153,5 +154,5 @@
                 "responsive": true,
             });
         });
-    </script>
+    </script> --}}
 @endpush
