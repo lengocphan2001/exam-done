@@ -17,7 +17,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-        <a class="btn btn-success mb-4 ml-2" href="{{ route('questions.index') }}"><i
+        <a class="btn btn-success mb-4 ml-2" href="{{ url()->previous() }}"><i
                 class="fas fa-angle-left mr-2"></i>Quay lại</a>
         <div class="container-fluid">
             <div class="row">
