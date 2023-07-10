@@ -67,7 +67,7 @@
                     <div class="card">
 
                         <div class="card-header">
-                            <h3 class="card-title">Danh sách thể loại</h3>
+                            <h3 class="card-title">Danh sách câu trả lời</h3>
                         </div>
 
                         <div class="card-body">
@@ -93,12 +93,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($arrayName = array($data['question']->answer()) as $item)
-                                                    <tr class="even">
+                                                @foreach ($data['question']->answers as $key => $item)
+                                                    <tr class="col">
                                                         <td class="dtr-control sorting_1" tabindex="0">
-                                                            {{ 1 }}</td>
-                                                        <td>{{ $item->answer }}</td>
-                                                        <td>{{ $item->image  }}</td>
+                                                            {{ $loop->iteration }}</td>
+                                                        <td>{{ $item->answer || '' }}</td>
+                                                        <td> <img src="{{ $item->image || '' }}" alt="Ảnh lỗi"></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -123,3 +123,35 @@
         </div>
     </section>
 @endsection
+@push('script')
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+@endpush

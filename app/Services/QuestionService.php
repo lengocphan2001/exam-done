@@ -25,4 +25,8 @@ class QuestionService extends Service{
             'difficulty' => $data['difficulty']
         ]);
     }
+
+    public function delete(Question $question){
+        $question->delete();
+    }
 }

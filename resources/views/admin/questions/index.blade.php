@@ -62,12 +62,24 @@
                                                         <td>{{ $item->type }}</td>
                                                         <td>{{ $item->difficulty }}</td>
                                                         <td>
-                                                            <a class="btn btn-primary" href="{{ route('questions.show', ['question' => $item]) }}"><i
+                                                            <form action="{{ route('questions.destroy', ['question' => $item]) }}"
+                                                                method="POST">
+                                                                <a href="{{ route('questions.show', ['question'=>$item]) }}"
+                                                                    class="btn btn-info"><i
                                                                     class="far fa-eye"></i></a>
-                                                            <a class="btn btn-success"><i
-                                                                    class="fas fa-edit"></i></a>
-                                                            <a class="btn btn-danger"><i
-                                                                    class="far fa-trash-alt"></i></a>
+                                                                <a class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger" type="submit"><i
+                                                                    class="far fa-trash-alt"></i></button>
+                                                            </form>
+                                                            {{-- <a class="btn btn-primary"
+                                                                href="{{ route('questions.show', ['question' => $item]) }}"><i
+                                                                    class="far fa-eye"></i></a>
+
+                                                            <a class="btn btn-danger"
+                                                                href="{{ route('questions.destroy', ['question' => $item]) }}"><i
+                                                                    class="far fa-trash-alt"></i></a> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -86,9 +98,6 @@
                                                 </tr>
                                             </tfoot>
                                         </table>
-                                    </div>
-                                    <div class="col">
-                                        <p>Hello</p>
                                     </div>
                                 </div>
                                 <div class="row">

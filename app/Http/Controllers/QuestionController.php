@@ -50,10 +50,10 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        $data['title'] = 'Danh sách câu trả lời';
+        $data['title'] = 'Thông tin chi tiết';
         $data['question'] = $question;
         $data['types'] = TypeService::getInstance()->getListTypes();
-        $data['answers'] = $question->answer();
+        $data['answers'] = $question->answers();
         
         return view('admin.questions.show')->with(['data' => $data]);
     }
@@ -79,6 +79,10 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        QuestionService::getInstance()->delete($question);
+        toastr()->success('Xóa thành công');
+
+        return redirect()->route('admin.questions.index');
+
     }
 }
