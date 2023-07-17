@@ -12,10 +12,11 @@ class Question extends Model
 
     protected $fillable = [
         'name',
-        'type',
-        'type_id',
         'difficulty',
+        'type',
+        'number_of_answers',
         'correct_answer',
+        'note',
     ];
 
     public function answers(): HasMany

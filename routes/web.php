@@ -25,7 +25,6 @@ Route::group(['middleware' => 'checkAdminLogin'], function () {
     Route::get('/', function () {
         return view('admin.auth.profile');
     });
-    Route::resource('types', TypeController::class);
     Route::resource('questions', QuestionController::class);
     Route::resource('exams', ExamController::class);
     Route::resource('answers', AnswerController::class)->except('store');

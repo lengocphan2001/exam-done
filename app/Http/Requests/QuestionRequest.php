@@ -22,7 +22,8 @@ class QuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'required', 'min:10', 'unique:questions,name']
+            'name' => ['string', 'required', 'min:10', 'unique:questions,name'],
+            'note' => ['string'],
         ];
     }
 
@@ -32,7 +33,8 @@ class QuestionRequest extends FormRequest
             'name.string' => 'Tên câu hỏi không hợp lệ',
             'name.required' => 'Tên câu hỏi không được để trống',
             'name.min' => 'Tên câu hỏi tối thiếu 10 ký tự',
-            'name.unique' => 'Tên câu hỏi đã tồn tại'
+            'name.unique' => 'Tên câu hỏi đã tồn tại',
+            'note.string' => 'Ghi chú không hợp lệ',
         ];
     }
 }

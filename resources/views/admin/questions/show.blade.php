@@ -35,16 +35,15 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="name" readonly>{{ $data['question']->name }}</textarea>
                             </div>
 
+                            
                             <div class="form-group">
-                                <label for="sel1">Thể loại</label>
-                                <select class="form-control" id="sel1" name="type_id" disabled>
-                                    @foreach ($data['types'] as $item)
-                                        <option value="{{ $item->id }}"
-                                            selected="{{ $item->name == $data['question']->type ? 'selected' : '' }}">
-                                            {{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                    <label for="sel1">Thể loại</label>
+                                    <select class="form-control" id="sel1" name="type" disabled>
+                                        <option value="Sa hình" selected="{{ "Sa hình" == $data['question']->type ? 'selected' : '' }}">Sa hình</option>
+                                        <option value="Luật giao thông đường bộ" selected="{{ "Luật giao thông đường bộ" == $data['question']->type ? 'selected' : '' }}">Luật giao thông đường bộ</option>
+                                        <option value="Luật biển báo giao thông" selected="{{ "Luật biển báo giao thông" == $data['question']->type ? 'selected' : '' }}">Luật biển báo giao thông</option>
+                                    </select>
+                                </div>
                             <div class="form-group">
 
                                 <label for="sel1">Độ khó</label>
@@ -88,8 +87,7 @@
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending">
                                                         Câu trả lời</th>
-                                                    <th tabindex="0" rowspan="1" colspan="1">
-                                                        Hình ảnh</th>
+                                                    
 
                                                 </tr>
                                             </thead>
@@ -99,7 +97,7 @@
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             {{ $loop->iteration }}</td>
                                                         <td>{{ $item->answer }}</td>
-                                                        <td> <img src="{{ asset($item->image) }}" alt="Ảnh lỗi" class="img-thumbnail img-rounded" style="width: 60px; height: 60px;"></td>
+
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -107,7 +105,7 @@
                                                 <tr>
                                                     <th rowspan="1" colspan="1">STT</th>
                                                     <th rowspan="1" colspan="1">Câu trả lời</th>
-                                                    <th rowspan="1" colspan="1">Hình ảnh</th>
+
                                                 </tr>
                                             </tfoot>
                                         </table>

@@ -41,8 +41,7 @@ class ExamController extends Controller
         if (!$exam){
             return redirect()->back()->withInput();
         }
-
-        $question = Question::all()->random(min(Question::all()->count(), 2));
+        $question = Question::all()->random(min(Question::all()->count(), intval($exam->number_of_questions)));
         foreach ($question as $question){
             ExamQuestion::create([
                 'exam_id' => $exam->id,

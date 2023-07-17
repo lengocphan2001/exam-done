@@ -40,10 +40,10 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1" name="type_id">
-                                        @foreach ($data['types'] as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
+                                    <select class="form-control" id="sel1" name="type">
+                                        <option value="Sa hình">Sa hình</option>
+                                        <option value="Luật giao thông đường bộ">Luật giao thông đường bộ</option>
+                                        <option value="Luật biển báo giao thông">Luật biển báo giao thông</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -54,6 +54,23 @@
                                         <option value="Khó">Khó</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="sel1">Số lượng câu trả lời</label>
+                                    <select class="form-control" id="sel1" name="number_of_answers">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
+                                </div>
+                                @if ($errors->has('note'))
+                                    <div class='text-danger mt-2'>
+                                        * {{ $errors->first('note') }}
+                                    </div>
+                                @endif
 
                             </div>
 

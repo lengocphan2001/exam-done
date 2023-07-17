@@ -42,12 +42,10 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1" name="type_id">
-                                        @foreach ($data['types'] as $item)
-                                            <option value="{{ $item->id }}"
-                                                selected="{{ $item->name == $data['question']->type ? 'selected' : '' }}">
-                                                {{ $item->name }}</option>
-                                        @endforeach
+                                    <select class="form-control" id="sel1" name="type">
+                                        <option value="Sa hình">Sa hình</option>
+                                        <option value="Luật giao thông đường bộ">Luật giao thông đường bộ</option>
+                                        <option value="Luật biển báo giao thông">Luật biển báo giao thông</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -64,6 +62,15 @@
                                         </option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
+                                </div>
+                                @if ($errors->has('note'))
+                                    <div class='text-danger mt-2'>
+                                        * {{ $errors->first('note') }}
+                                    </div>
+                                @endif
 
                             </div>
                             <div class="card-body">
@@ -74,19 +81,6 @@
                                             <input type="text" class="form-control" id="exampleInputEmail1"
                                                 placeholder="Câu trả lời 1" name="question{{ $loop->iteration }}"
                                                 value="{{ $item->answer }}">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Hình ảnh câu trả lời
-                                                .{{ $loop->iteration }}</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="exampleInputFile"
-                                                        name="image_question{{ $loop->iteration }}">
-                                                    <label class="custom-file-label" for="exampleInputFile">Chọn hình
-                                                        ảnh</label>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 @endforeach

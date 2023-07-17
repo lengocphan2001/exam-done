@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->string('answer');
-            $table->string('image');
             $table->timestamps();
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });

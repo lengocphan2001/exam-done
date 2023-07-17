@@ -28,7 +28,6 @@ class QuestionController extends Controller
     public function create()
     {
         $data['title'] = 'Câu hỏi';
-        $data['types'] = TypeService::getInstance()->getListTypes();
 
         return view('admin.questions.create')->with(['data' => $data]);
     }
@@ -44,7 +43,6 @@ class QuestionController extends Controller
         toastr()->success('Thêm câu hỏi thành công');
 
         return view('admin.answers.create')->with(['data' => $data]);
-
     }
 
     /**
@@ -54,7 +52,6 @@ class QuestionController extends Controller
     {
         $data['title'] = 'Thông tin chi tiết';
         $data['question'] = $question;
-        $data['types'] = TypeService::getInstance()->getListTypes();
         $data['answers'] = $question->answers();
 
         return view('admin.questions.show')->with(['data' => $data]);
@@ -67,7 +64,6 @@ class QuestionController extends Controller
     {
         $data['title'] = 'Thông tin chi tiết';
         $data['question'] = $question;
-        $data['types'] = TypeService::getInstance()->getListTypes();
 
         return view('admin.questions.edit')->with(['data' => $data]);
     }
@@ -78,25 +74,29 @@ class QuestionController extends Controller
     public function update(Request $request, Question $question)
     {
         $data1 = $request->all();
-        if ($data1['question1'] == null || $data1['question2'] == null || $data1['question3'] == null || $data1['question4'] == null || $data1['name'] == null){
-            toastr()->error('Không được để trống các trường');
-            return back()->withInput();
-        }else{
-            $question->update([
-                'name' => $data1['name'],
-                'type_id' => $data1['type_id'],
-                'type' => Type::where('id', $data1['type_id'])->first()->name,
-                'difficulty' => $data1['difficulty']
-            ]);
-
-            $question->save();
-
-            AnswerService::getInstance()->update($question, $request);
-            $data['title'] = 'Câu hỏi';
-            $data['questions'] = QuestionService::getInstance()->getListQuestions();
-            toastr()->success('Cập nhật thành công');
-            return redirect(route('questions.index'))->with(['data', $data]);
+        for ($i = 1; $i <= $question->number_of_answers; $i++) {
+            if ($data1['question1'] == null) {
+                toastr()->error('Không được để trống các trường');
+                return back()->withInput();
+            }
         }
+
+        $question->update([
+            'name' => $data1['name'],
+            'type' => $data1['type'],
+            'number_of_answers' => $data1['number_of_answers'],
+            'difficulty' => $data1['difficulty'],
+            'answer' => $data1['correct_answer'],
+            'note' => $data1['note'],
+        ]);
+
+        $question->save();
+
+        AnswerService::getInstance()->update($question, $request);
+        $data['title'] = 'Câu hỏi';
+        $data['questions'] = QuestionService::getInstance()->getListQuestions();
+        toastr()->success('Cập nhật thành công');
+        return redirect(route('questions.index'))->with(['data', $data]);
     }
 
     /**
@@ -106,8 +106,6 @@ class QuestionController extends Controller
     {
         QuestionService::getInstance()->delete($question);
         toastr()->success('Xóa thành công');
-
         return redirect()->route('questions.index');
-
     }
 }

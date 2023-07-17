@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Http\Requests\QuestionRequest;
@@ -10,23 +11,29 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-class QuestionService extends Service{
+class QuestionService extends Service
+{
 
-    public function getListQuestions(){
+    public function getListQuestions()
+    {
         $data = Question::all();
         return $data;
     }
-    public function create(QuestionRequest $request){
+    public function create(QuestionRequest $request)
+    {
         $data = $request->all();
         return Question::create([
             'name' => $data['name'],
-            'type_id' => $data['type_id'],
-            'type' => Type::where('id', $data['type_id'])->first()->name,
-            'difficulty' => $data['difficulty']
+            'type' => $data['type'],
+            'number_of_answers' => $data['number_of_answers'],
+            'difficulty' => $data['difficulty'],
+            'answer' => 'A',
+            'note' => $data['note'],
         ]);
     }
 
-    public function delete(Question $question){
+    public function delete(Question $question)
+    {
         $question->delete();
     }
 }

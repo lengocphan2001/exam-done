@@ -11,6 +11,7 @@ class Exam extends Model
 
     protected $fillable = [
         'name',
+        'number_of_questions',
         'duration',
         'difficulty'
     ];

@@ -13,7 +13,6 @@ class Answer extends Model
     protected $fillable = [
         'question_id',
         'answer',
-        'image'
     ];
 
     protected function question() : BelongsTo
