@@ -1,5 +1,6 @@
 @php
-use App\Models\Question;
+    use App\Models\Question;
+    use App\Models\Kind;
 @endphp
 @extends('admin.layout')
 
@@ -20,7 +21,8 @@ use App\Models\Question;
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-        <a class="btn btn-success mb-4 ml-2" href="{{ route('exams.index') }}"><i class="fas fa-angle-left mr-2"></i>Quay
+        <a class="btn btn-success mb-4 ml-2" href="{{ route('admin.exams.index') }}"><i
+                class="fas fa-angle-left mr-2"></i>Quay
             lại</a>
         <div class="container-fluid">
             <div class="row">
@@ -47,14 +49,12 @@ use App\Models\Question;
 
                                 <label for="sel1">Độ khó</label>
                                 <select class="form-control" id="sel1" name="difficulty" disabled>
-                                    <option value="Dễ"
-                                        selected="{{ $data['exam']->difficulty === 'Dễ' ? 'selected' : '' }}">Dễ
+                                    <option value="Dễ" {{ $data['exam']->topic === 'Dễ' ? 'selected' : '' }}>Dễ
                                     </option>
                                     <option value="Trung bình"
-                                        selected="{{ $data['exam']->difficulty === 'Trung bình' ? 'selected' : '' }}">
+                                        {{ $data['exam']->topic === 'Trung bình' ? 'selected' : '' }}>
                                         Trung bình</option>
-                                    <option value="Khó"
-                                        selected="{{ $data['exam']->difficulty === 'Khó' ? 'selected' : '' }}">Khó
+                                    <option value="Khó" {{ $data['exam']->topic === 'Khó' ? 'selected' : '' }}>Khó
                                     </option>
                                 </select>
                             </div>
@@ -90,7 +90,7 @@ use App\Models\Question;
                                                     <th tabindex="0" rowspan="1" colspan="1">
                                                         Thể loại</th>
                                                     <th tabindex="0" rowspan="1" colspan="1">
-                                                        Độ khó</th>
+                                                        Điểm liệt</th>
                                                     <th tabindex="0" rowspan="1" colspan="1">
                                                         Hành động</th>
 
@@ -101,22 +101,18 @@ use App\Models\Question;
                                                     <tr class="odd">
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             {{ $loop->iteration }}</td>
-                                                        <td>{{ Question::where('id', $item->question_id)->first()->name }}</td>
-                                                        <td>{{ Question::where('id', $item->question_id)->first()->type }}</td>
-                                                        <td>{{ Question::where('id', $item->question_id)->first()->difficulty }}</td>
+                                                        <td>{{ Question::where('id', $item->question_id)->first()->name }}
+                                                        </td>
+                                                        <td>{{ Kind::where('id', Question::where('id', $item->question_id)->first()->kind_id)->first()->name }}
+                                                        </td>
+                                                        <td>{{ Question::where('id', $item->question_id)->first()->is_paralysis ? 'Có' : 'Không' }}
+                                                        </td>
                                                         <td>
 
-                                                            <a href="{{ route('questions.show', ['question' => Question::where('id', $item->question_id)->first()]) }}"
+                                                            <a href="{{ route('admin.questions.show', ['question' => Question::where('id', $item->question_id)->first()]) }}"
                                                                 class="btn btn-info"><i class="far fa-eye"></i></a>
 
                                                             </form>
-                                                            {{-- <a class="btn btn-primary"
-                                                                href="{{ route('questions.show', ['question' => $item]) }}"><i
-                                                                    class="far fa-eye"></i></a>
-
-                                                            <a class="btn btn-danger"
-                                                                href="{{ route('questions.destroy', ['question' => $item]) }}"><i
-                                                                    class="far fa-trash-alt"></i></a> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

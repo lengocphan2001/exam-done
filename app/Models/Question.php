@@ -12,10 +12,11 @@ class Question extends Model
 
     protected $fillable = [
         'name',
-        'difficulty',
-        'type',
+        'kind_id',
+        'is_paralysis',
+        'image',
         'number_of_answers',
-        'correct_answer',
+        'answer',
         'note',
     ];
 

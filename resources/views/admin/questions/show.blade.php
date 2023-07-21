@@ -1,3 +1,6 @@
+@php
+    use App\Models\Kind;
+@endphp
 @extends('admin.layout')
 
 @section('content')
@@ -17,8 +20,8 @@
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-        <a class="btn btn-success mb-4 ml-2" href="{{ url()->previous() }}"><i
-                class="fas fa-angle-left mr-2"></i>Quay lại</a>
+        <a class="btn btn-success mb-4 ml-2" href="{{ url()->previous() }}"><i class="fas fa-angle-left mr-2"></i>Quay
+            lại</a>
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
@@ -35,28 +38,32 @@
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="name" readonly>{{ $data['question']->name }}</textarea>
                             </div>
 
-                            
+
+
+
+
                             <div class="form-group">
-                                    <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1" name="type" disabled>
-                                        <option value="Sa hình" selected="{{ "Sa hình" == $data['question']->type ? 'selected' : '' }}">Sa hình</option>
-                                        <option value="Luật giao thông đường bộ" selected="{{ "Luật giao thông đường bộ" == $data['question']->type ? 'selected' : '' }}">Luật giao thông đường bộ</option>
-                                        <option value="Luật biển báo giao thông" selected="{{ "Luật biển báo giao thông" == $data['question']->type ? 'selected' : '' }}">Luật biển báo giao thông</option>
-                                    </select>
-                                </div>
+                                <label for="sel1">Thể loại</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" readonly
+                                    value="{{ Kind::where('id', $data['question']->kind_id)->first()->name }}" />
+                            </div>
                             <div class="form-group">
 
-                                <label for="sel1">Độ khó</label>
-                                <select class="form-control" id="sel1" name="difficulty" disabled>
-                                    <option value="Dễ"
-                                        selected="{{ $data['question']->difficulty === "Dễ" ? 'selected' : '' }}">Dễ</option>
-                                    <option value="Trung bình"
-                                        selected="{{ $data['question']->difficulty === "Trung bình" ? 'selected' : '' }}">
-                                        Trung bình</option>
-                                    <option value="Khó"
-                                        selected="{{ $data['question']->difficulty === "Khó" ? 'selected' : '' }}">Khó
-                                    </option>
-                                </select>
+                                <label for="sel1">Điểm liệt</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" readonly
+                                    value="{{ $data['question']->is_paralysis == 1 ? 'Có' : 'Không' }}" />
+                            </div>
+                            <div class="form-group">
+
+                                <label for="sel1">Số lượng câu trả lời</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" readonly
+                                    value="{{ $data['question']->number_of_answers }}" />
+                            </div>
+                            <div class="form-group">
+
+                                <label for="sel1">Đáp án đúng</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" readonly
+                                    value="{{ $data['question']->answer }}" />
                             </div>
 
                         </div>
@@ -87,7 +94,7 @@
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending">
                                                         Câu trả lời</th>
-                                                    
+
 
                                                 </tr>
                                             </thead>
@@ -114,6 +121,28 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    @if ($data['question']->kind_id == 1 || $data['question']->kind_id == 2)
+                        <div class="card-header">
+                            <h3 class="card-title">Hình ảnh</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img class="rounded mx-auto d-block img-thumbnail" name="image"
+                                            src="{{ asset($data['question']->image) }}" />
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="card card-primary">
+
+
 
                     </div>
                 </div>

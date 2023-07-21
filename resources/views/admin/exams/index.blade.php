@@ -60,11 +60,11 @@
                                                             {{ $loop->iteration }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->duration }}</td>
-                                                        <td>{{ $item->difficulty }}</td>
+                                                        <td>{{ $item->topic }}</td>
                                                         <td>
-                                                            <form action="{{ route('exams.destroy', ['exam' => $item]) }}"
+                                                            <form action="{{ route('admin.exams.destroy', ['exam' => $item]) }}"
                                                                 method="POST">
-                                                                <a href="{{ route('exams.show', ['exam'=>$item]) }}"
+                                                                <a href="{{ route('admin.exams.show', ['exam'=>$item]) }}"
                                                                     class="btn btn-info"><i
                                                                     class="far fa-eye"></i></a>
                                                                 {{-- <a class="btn btn-success" href="{{ route('exams.edit', ['exam' => $item]) }}"><i class="fas fa-edit"></i></a> --}}

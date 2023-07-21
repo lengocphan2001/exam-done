@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm bài thi</h3>
                         </div>
-                        <form action="{{ route('exams.store') }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('admin.exams.store') }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -50,7 +50,7 @@
                                 
                                 <div class="form-group">
                                     <label for="sel1">Độ khó</label>
-                                    <select class="form-control" id="sel1" name="difficulty">
+                                    <select class="form-control" id="sel1" name="topic">
                                         <option value="Dễ">Dễ</option>
                                         <option value="Trung bình">Trung bình</option>
                                         <option value="Khó">Khó</option>
@@ -59,8 +59,8 @@
                                 <div class="form-group">
                                     <label for="sel1">Số lượng câu hỏi</label>
                                     <select class="form-control" id="sel1" name="number_of_questions">
-                                        <option value="25">25 câu</option>
-                                        <option value="30">30 câu</option>
+                                        <option value=25>25 câu</option>
+                                        <option value=30>30 câu</option>
                                     </select>
                                 </div>
 

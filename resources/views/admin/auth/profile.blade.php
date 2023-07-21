@@ -22,7 +22,7 @@
                                     <div class="row pt-1">
                                         <div class="col-6 mb-3">
                                             <h6>Email</h6>
-                                            <p class="text-muted">{{ Auth::guard('admin')->user()->email }}</p>
+                                            <p class="text-muted">{{ Auth::user()->email }}</p>
                                         </div>
                                         <div class="col-6 mb-3">
                                             <h6>Phone</h6>
@@ -48,10 +48,40 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+
+
                 </div>
+
+                <div class="col-md-4">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Đổi mật khẩu</h3>
+                        </div>
+                        <form action="{{ route('admin.changePassword') }}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Mật khẩu mới</label>
+                                    <input class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                        name="password" />
+                                </div>
+                                @if ($errors->has('password'))
+                                    <div class='text-danger mt-2'>
+                                        * {{ $errors->first('password') }}
+                                    </div>
+                                @endif
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 @endsection

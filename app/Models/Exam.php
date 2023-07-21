@@ -13,7 +13,7 @@ class Exam extends Model
         'name',
         'number_of_questions',
         'duration',
-        'difficulty'
+        'topic'
     ];
 
     public function questions(){

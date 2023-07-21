@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('number_of_questions');
             $table->double('duration');
-            $table->string('difficulty');
+            $table->string('topic');
             $table->timestamps();
         });
     }

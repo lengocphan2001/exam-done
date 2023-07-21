@@ -24,9 +24,9 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Thêm câu hỏi</h3>
+                            <h3 class="card-title">Chỉnh sửa câu hỏi</h3>
                         </div>
-                        <form action="{{ route('questions.update', ['question' => $data['question']]) }}"
+                        <form action="{{ route('admin.questions.update', ['question' => $data['question']]) }}"
                             enctype="multipart/form-data" method="post">
                             @csrf
                             @method('put')
@@ -42,29 +42,30 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1" name="type">
-                                        <option value="Sa hình">Sa hình</option>
-                                        <option value="Luật giao thông đường bộ">Luật giao thông đường bộ</option>
-                                        <option value="Luật biển báo giao thông">Luật biển báo giao thông</option>
+                                    <select class="form-control" name="kind_id" id="kind">
+                                        @foreach ($data['kinds'] as $item)
+                                            <option value={{ $item->id }}>{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sel1">Độ khó</label>
-                                    <select class="form-control" id="sel1" name="difficulty">
-                                        <option value="Dễ"
-                                            selected="{{ 'Dễ' == $data['question']->difficulty ? 'selected' : '' }}">Dễ
-                                        </option>
-                                        <option value="Trung bình"
-                                            selected="{{ 'Trung bình' == $data['question']->difficulty ? 'selected' : '' }}">
-                                            Trung bình</option>
-                                        <option value="Khó"
-                                            selected="{{ 'Khó' == $data['question']->difficulty ? 'selected' : '' }}">Khó
-                                        </option>
+                                    <label for="sel1">Điểm liệt</label>
+                                    <select class="form-control" id="sel1" name="is_paralysis">
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">Số lượng câu trả lời</label>
+                                    <select class="form-control" id="sel1" name="number_of_answers">
+                                        <option value="2" {{ $data['question']->number_of_answers == 2 ? 'selected' : ''}}>2</option>
+                                        <option value="3" {{ $data['question']->number_of_answers == 3 ? 'selected' : ''}}>3</option>
+                                        <option value="4" {{ $data['question']->number_of_answers == 4 ? 'selected' : ''}}>4</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note">{{ $data['question']->note }}</textarea>
                                 </div>
                                 @if ($errors->has('note'))
                                     <div class='text-danger mt-2'>
@@ -72,8 +73,24 @@
                                     </div>
                                 @endif
 
+                                <div class="form-group">
+                                    <label for="sel1">Đáp án đúng</label>
+                                    <select class="form-control" id="sel1" name="answer">
+                                        {{ $data['question']->answer == 'A' ? 'true' : 'false'}}
+                                        @for ($i = 0, $c = 'A'; $i < $data['question']->number_of_answers; $i++, $c++)
+                                            <option value="{{ $c }}" {{ $data['question']->answer == $c ? 'selected' : ''}}>{{ $c }}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="question-image">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Hình ảnh</label>
+                                    <input type="file" name="image" class="form-control" style="padding: 3px" />
+                                </div>
+
                             </div>
                             <div class="card-body">
+                                <h3>Câu trả lời</h3>
                                 @foreach ($data['question']->answers as $item)
                                     <div class="card-body">
                                         <div class="form-group">
@@ -100,8 +117,12 @@
 
 @push('script')
     <script>
-        $(function() {
-            bsCustomFileInput.init();
+        $('#kind').on('change', function() {
+            if (this.value == 1 || this.value == 2) {
+                $('#question-image').show();
+            } else {
+                $('#question-image').hide();
+            }
         });
     </script>
 @endpush

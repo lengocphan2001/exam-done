@@ -1,3 +1,6 @@
+@php
+    use \App\Models\Kind;
+@endphp
 @extends('admin.layout')
 
 @section('content')
@@ -47,7 +50,11 @@
                                                     <th tabindex="0" rowspan="1" colspan="1">
                                                         Thể loại</th>
                                                     <th tabindex="0" rowspan="1" colspan="1">
-                                                        Độ khó</th>
+                                                        Điểm liệt</th>
+                                                    <th tabindex="0" rowspan="1" colspan="1">
+                                                        Số đáp án</th>
+                                                    <th tabindex="0" rowspan="1" colspan="1">
+                                                        Đáp án đúng</th>
                                                     <th tabindex="0" rowspan="1" colspan="1">
                                                         Hành động</th>
 
@@ -59,15 +66,17 @@
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             {{ $loop->iteration }}</td>
                                                         <td>{{ $item->name }}</td>
-                                                        <td>{{ $item->type }}</td>
-                                                        <td>{{ $item->difficulty }}</td>
+                                                        <td>{{ Kind::where('id', $item->kind_id)->first()->name }}</td>
+                                                        <td>{{ $item->is_paralysis == 1 ? 'Có' : 'Không' }}</td>
+                                                        <td>{{ $item->number_of_answers }}</td>
+                                                        <td>{{ $item->answer }}</td>
                                                         <td>
-                                                            <form action="{{ route('questions.destroy', ['question' => $item]) }}"
+                                                            <form action="{{ route('admin.questions.destroy', ['question' => $item]) }}"
                                                                 method="POST">
-                                                                <a href="{{ route('questions.show', ['question'=>$item]) }}"
+                                                                <a href="{{ route('admin.questions.show', ['question'=>$item]) }}"
                                                                     class="btn btn-info"><i
                                                                     class="far fa-eye"></i></a>
-                                                                <a class="btn btn-success" href="{{ route('questions.edit', ['question' => $item]) }}"><i class="fas fa-edit"></i></a>
+                                                                <a class="btn btn-success" href="{{ route('admin.questions.edit', ['question' => $item]) }}"><i class="fas fa-edit"></i></a>
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger" type="submit"><i
@@ -93,7 +102,9 @@
                                                     <th rowspan="1" colspan="1">STT</th>
                                                     <th rowspan="1" colspan="1">Tên câu hỏi</th>
                                                     <th rowspan="1" colspan="1">Thể loại</th>
-                                                    <th rowspan="1" colspan="1">Độ khó</th>
+                                                    <th rowspan="1" colspan="1">Điểm liệt</th>
+                                                    <th rowspan="1" colspan="1">Số câu trả lời</th>
+                                                    <th rowspan="1" colspan="1">Đáp án đúng</th>
                                                     <th rowspan="1" colspan="1">Hành động</th>
                                                 </tr>
                                             </tfoot>

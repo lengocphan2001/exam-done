@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AnswerController;
-use App\Http\Controllers\ExamController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\TypeController;
+use App\Http\Controllers\Admin\AnswerController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ExamController;
+use App\Http\Controllers\Admin\KindController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/login', [AdminController::class, 'loginForm'])->name('admin.login');
-Route::post('admin/login', [AdminController::class, 'login'])->name('admin.postLogin');
+Route::get('admin/login', [AuthController::class, 'loginForm'])->name('admin.login');
+Route::post('admin/login', [AuthController::class, 'login'])->name('admin.postLogin');
 
-Route::group(['middleware' => 'checkAdminLogin'], function () {
+Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(function () {
     Route::get('/', function () {
         return view('admin.auth.profile');
     });
     Route::resource('questions', QuestionController::class);
+    Route::resource('users', UserController::class);
     Route::resource('exams', ExamController::class);
+    Route::resource('kinds', KindController::class);
     Route::resource('answers', AnswerController::class)->except('store');
     Route::post('/answers/{id}', [AnswerController::class, 'store'])->name('answers.store');
-    Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
-    Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('admin/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('admin/changePassword', [AuthController::class, 'changePassword'])->name('changePassword');
 });
+
+

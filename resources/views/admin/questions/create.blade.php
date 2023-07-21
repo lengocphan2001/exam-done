@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm câu hỏi</h3>
                         </div>
-                        <form action="{{ route('questions.store') }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('admin.questions.store') }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -40,18 +40,17 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="sel1">Thể loại</label>
-                                    <select class="form-control" id="sel1" name="type">
-                                        <option value="Sa hình">Sa hình</option>
-                                        <option value="Luật giao thông đường bộ">Luật giao thông đường bộ</option>
-                                        <option value="Luật biển báo giao thông">Luật biển báo giao thông</option>
+                                    <select class="form-control" name="kind_id" id="kind">
+                                        @foreach ($data['kinds'] as $item)
+                                            <option value={{ $item->id }}>{{ $item->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sel1">Độ khó</label>
-                                    <select class="form-control" id="sel1" name="difficulty">
-                                        <option value="Dễ">Dễ</option>
-                                        <option value="Trung bình">Trung bình</option>
-                                        <option value="Khó">Khó</option>
+                                    <label for="sel1">Điểm liệt</label>
+                                    <select class="form-control" id="sel1" name="is_paralysis">
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -72,6 +71,11 @@
                                     </div>
                                 @endif
 
+                                <div class="form-group" id="question-image">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Hình ảnh</label>
+                                    <input type="file" name="image" class="form-control" style="padding: 3px" />
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
@@ -84,3 +88,15 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+        $('#kind').on('change', function() {
+            if (this.value == 1 || this.value == 2) {
+                $('#question-image').show();
+            } else {
+                $('#question-image').hide();
+            }
+        });
+    </script>
+@endpush

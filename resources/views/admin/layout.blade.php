@@ -83,7 +83,7 @@
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::guard('admin')->user()->email }}</a>
+                        <a href="#" class="d-block">{{ Auth::user()->email }}</a>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.profile') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Trang chủ
@@ -124,13 +124,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('questions.index') }}" class="nav-link">
+                                    <a href="{{ route('admin.questions.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('questions.create') }}" class="nav-link">
+                                    <a href="{{ route('admin.questions.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm mới</p>
                                     </a>
@@ -146,19 +146,49 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item active">
-                                    <a href="{{ route('exams.index') }}" class="nav-link">
+                                    <a href="{{ route('admin.exams.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('exams.create') }}" class="nav-link">
+                                    <a href="{{ route('admin.exams.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Thêm mới</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-user"></i>
+                                <p>
+                                    Thành viên
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item active">
+                                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.users.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.kinds.index') }}" class="nav-link">
+                                <i class="nav-icon far fa-bookmark"></i>
+                                <p>
+                                    Thể loại
+                                </p>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -167,7 +197,6 @@
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
 
