@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\KindController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('admin/login', [AuthController::class, 'loginForm'])->name('admin.login');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.postLogin');
+
+Route::get('login', [UserAuthController::class, 'loginForm'])->name('login');
+Route::post('login', [UserAuthController::class, 'login'])->name('postLogin');
+
+Route::get('register', [UserAuthController::class, 'registerForm'])->name('register');
+Route::post('register', [UserAuthController::class, 'register'])->name('postRegister');
+
+Route::get('dashboard', function(){
+    return view('user.layout');
+});
 
 Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(function () {
     Route::get('/', function () {
