@@ -20,8 +20,12 @@ Route::get('register', [UserAuthController::class, 'registerForm'])->name('regis
 Route::post('register', [UserAuthController::class, 'register'])->name('postRegister');
 
 Route::get('dashboard', function(){
-    return view('user.layout');
+    return view('user.dashboard');
 })->name('dashboard');
+
+Route::get('exam', function(){
+    return view('user.exams.index');
+})->name('exam');
 
 Route::middleware(['middleware' => 'checkUserLogin'])->group(function (){
     Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');

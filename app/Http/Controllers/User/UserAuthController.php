@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class UserAuthController extends Controller
      */
     public function index()
     {
-        //
+        $data['exam'] = Exam::all();
+
+        return view('user.dashboard')->with(['data', $data]);
     }
 
     /**
