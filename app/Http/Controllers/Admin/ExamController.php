@@ -42,14 +42,14 @@ class ExamController extends Controller
         if (!$exam){
             return redirect()->back()->withInput();
         }
-        $question = Question::all()->random(min(Question::all()->count(), intval($exam->number_of_questions)));
+        $question = Question::where('kind_id', 1)->get()->random(min(Question::all()->count(), intval($exam->number_of_questions)));
         foreach ($question as $question){
             ExamQuestion::create([
                 'exam_id' => $exam->id,
                 'question_id' => $question->id
             ]);
         };
-
+        // random 5 sa hình, 5 biển báo, 15 giao thông db
         toastr()->success('Thêm bài thi thành công');
         return redirect(route('admin.exams.index'))->with(['data', $data]);
     }

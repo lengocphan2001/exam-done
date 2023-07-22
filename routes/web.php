@@ -9,16 +9,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('admin/login', [AuthController::class, 'loginForm'])->name('admin.login');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.postLogin');
