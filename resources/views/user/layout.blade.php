@@ -40,12 +40,24 @@
                             <li><a href="about.html"><span>Thi 20 câu điểm liệt</span></a></li>
                             <li><a href="blog.html"><span>Lý thuyết</span></a></li>
                             <li class="has-children">
-                                <a href="{{ route('login') }}"><span>Đăng nhập</span></a>
-                                <ul class="dropdown arrow-top">
-                                    <li><a href="#">Đăng ký</a></li>
-                                    {{-- <li><a href="#">Menu Two</a></li>
+                                @if (Auth::user() && Auth::user()->isActive)
+                                
+                                    <a href=""><span>{{ Auth::user()->name }}</span></a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="{{ route('register') }}">Trang cá nhân</a></li>
+                                        <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                        {{-- <li><a href="#">Menu Two</a></li>
                                     <li><a href="#">Menu Three</a></li> --}}
-                                </ul>
+                                    </ul>
+                                @else
+                                    <a href="{{ route('login') }}"><span>Đăng nhập</span></a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="{{ route('register') }}">Đăng ký</a></li>
+                                        {{-- <li><a href="#">Menu Two</a></li>
+                                    <li><a href="#">Menu Three</a></li> --}}
+                                    </ul>
+                                @endif
+
                             </li>
                         </ul>
                     </nav>
@@ -63,7 +75,7 @@
 
     </header>
     <div class="hero" style="background-image: url('user/images/hero_1.jpg');">
-      @yield('content')
+        @yield('content')
     </div>
     <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('user/js/popper.min.js') }}"></script>

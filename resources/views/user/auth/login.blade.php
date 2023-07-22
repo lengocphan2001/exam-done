@@ -30,6 +30,7 @@
                         class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-4 col-lg-4 col-xl-4 offset-xl-1 mt-5">
+                    <h3 class="mb-3">Đăng nhập</h3>
                     <form accept="{{ route('postLogin') }}" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="input-group form-group">
@@ -46,10 +47,10 @@
                             <input type="password" class="form-control" placeholder="password" name="password">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Login" class="btn float-right login_btn">
+                            <input type="submit" value="Login" class="btn float-right login_btn btn-success">
                         </div>
                     </form>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Chưa có tài khoản? <a href="#!"
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Chưa có tài khoản? <a href="{{ route('register') }}"
                             class="link-danger">Đăng ký</a></p>
                 </div>
             </div>

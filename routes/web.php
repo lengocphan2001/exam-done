@@ -31,8 +31,11 @@ Route::post('register', [UserAuthController::class, 'register'])->name('postRegi
 
 Route::get('dashboard', function(){
     return view('user.layout');
-});
+})->name('dashboard');
 
+Route::middleware(['middleware' => 'checkUserLogin'])->group(function (){
+    Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');
+});
 Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(function () {
     Route::get('/', function () {
         return view('admin.auth.profile');
