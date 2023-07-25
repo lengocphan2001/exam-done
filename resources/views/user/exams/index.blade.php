@@ -20,13 +20,14 @@
                             Cục Đường Bộ Việt Nam quy định trong kỳ thi sát hạch chính thức.</span>
                         <p style="text-align: justify;" class="text-success"><span
                                 style="font-family: arial, helvetica, sans-serif; font-size: 100%;">Để tập phần thi lý
-                                thuyết bằng lái xe A1 tốt nhất, các học viên có thể sử dụng trực tiếp những bộ đề thi này. Bởi
+                                thuyết bằng lái xe A1 tốt nhất, các học viên có thể sử dụng trực tiếp những bộ đề thi này.
+                                Bởi
                                 chúng tôi đã tổng hợp đầy đủ 200 câu hỏi thi bằng lái xe máy A1 đã đánh dấu sẵn đáp án và
                                 câu hỏi điểm liệt.</span></p>
-                        
+
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-md-7 col-sm-15 col-xs-15 card p-5">
                 <div class="panel panel-default">
@@ -34,7 +35,8 @@
                         <h2 style="text-align:center; "><span style="color: #ff0000;"><strong class="text-success">BỘ ĐỀ THI
                                     THỬ BẰNG LÁI XE MÁY A1</strong></span></h2>
                         <div>
-                            <p style="text-align: justify;" class="text-primary">Cấu trúc bộ đề thi sát hạch giấy phép lái xe hạng A1 sẽ bao gồm
+                            <p style="text-align: justify;" class="text-primary">Cấu trúc bộ đề thi sát hạch giấy phép lái
+                                xe hạng A1 sẽ bao gồm
                                 <strong>25 câu hỏi</strong>, mỗi câu hỏi chỉ có <strong>duy nhất 1 đáp trả lời
                                     đúng</strong>. Khác hẳn với bộ đề thi luật cũ là 2 đáp án. Mỗi đề thi chúng tôi sẽ bố
                                 trí từ <strong>2 - 4 câu hỏi điểm liệt</strong> để học viên có thể làm quen và ghi nhớ,
@@ -45,9 +47,11 @@
                                 <li>Yêu cầu làm đúng <span style="color: #ff0000;"><strong>21/25 Câu</strong></span>.</li>
                             </ul>
                             <p style="text-align: justify;" class="text-danger"><strong>Lưu ý đặc biệt:</strong> <span
-                                     class="text-primary">Tuyệt đối không được làm sai câu hỏi điểm liệt, vì trong kỳ thi
-                                    thật nếu học viên làm sai "<strong class="text-danger">Câu Điểm Liệt</strong>" đồng nghĩa với việc
-                                    "<strong class="text-warning">KHÔNG ĐẠT</strong>" dù cho các câu khác trả lời đúng!</span></p>
+                                    class="text-primary">Tuyệt đối không được làm sai câu hỏi điểm liệt, vì trong kỳ thi
+                                    thật nếu học viên làm sai "<strong class="text-danger">Câu Điểm Liệt</strong>" đồng
+                                    nghĩa với việc
+                                    "<strong class="text-warning">KHÔNG ĐẠT</strong>" dù cho các câu khác trả lời
+                                    đúng!</span></p>
                             <div>
                                 <div style="margin-bottom:10px">
                                     <strong style="font-size: 16px; color: red;">
@@ -56,13 +60,22 @@
                                 </div>
                                 <div>
                                     <strong style="font-size: 16px;">
+<<<<<<< HEAD
                                     <a href=""></a>
                                         <a type="submit" class="btn btn-success btn-thongtin" name="chondethi"
                                             value="" href="">Đề 1</a>
+=======
+                                        @foreach ($data['exams'] as $item)
+                                            <a class="btn btn-success btn-thongtin" name="chondethi"
+                                                href="{{ route('exam.show', ['exam' => $item]) }}" value="Đề 1">Đề
+                                                {{ $loop->iteration }}</a>
+                                        @endforeach
+
+>>>>>>> 31643afcec698cabfc9907efe4d2f09608d3f8b3
                                     </strong>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -71,11 +84,15 @@
     </div>
 @endsection
 
+<<<<<<< HEAD
 @push('script')
     <script src="user/js/main.js"></script>
 @endpush
 
 <style>
+=======
+{{-- <style>
+>>>>>>> 31643afcec698cabfc9907efe4d2f09608d3f8b3
     [type=radio] {
         display: none;
     }
@@ -339,4 +356,4 @@
             text-align: left;
         }
     }
-</style>
+</style> --}}

@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\KindController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\ExamController as UserExamController;
+use App\Http\Controllers\User\ExamResultController;
+use App\Http\Controllers\User\ExamResultQuestionController;
 use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +26,6 @@ Route::get('dashboard', function(){
     return view('user.dashboard');
 })->name('dashboard');
 
-Route::get('exam', function(){
-    return view('user.exams.index');
-})->name('exam');
 
 Route::middleware(['middleware' => 'checkUserLogin'])->group(function (){
     Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');
@@ -45,7 +44,10 @@ Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(fu
     Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('admin/changePassword', [AuthController::class, 'changePassword'])->name('changePassword');
 });
+Route::resource('exam', App\Http\Controllers\User\ExamController::class)->except('store');
+Route::post('/exam/{id}', [App\Http\Controllers\User\ExamController::class, 'store'])->name('exam.store');
+Route::resource('result', ExamResultController::class);
+Route::resource('resultquestion', ExamResultQuestionController::class);
 
-Route::resource('exam', UserExamController::class);
 
 

@@ -12,7 +12,11 @@
     <title>Trang chủ</title>
 </head>
 
+<<<<<<< HEAD
 <body style="height: auto">
+=======
+<body class="text-black">
+>>>>>>> 31643afcec698cabfc9907efe4d2f09608d3f8b3
 
     <header class="site-navbar" role="banner">
         <div class="container-fluid pl-5">
