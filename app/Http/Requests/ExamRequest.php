@@ -23,7 +23,6 @@ class ExamRequest extends FormRequest
     {
         return [
             'name' => ['string', 'required'],
-            'duration' => ['required']
         ];
     }
 
@@ -33,7 +32,6 @@ class ExamRequest extends FormRequest
         return [
             'name.string' => 'Tên bài thi không hợp lệ',
             'name.required' => 'Tên bài thi không được để trống',
-            'duration.required' => 'Thời gian làm bài không được để trống'
         ];
     }
 }

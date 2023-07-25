@@ -24,6 +24,10 @@ class AnswerService extends Service
                 'answer' => $data['question' . $x],
             ]);
         }
+        $question->update([
+            'answer' => $data['answer'],
+        ]);
+        $question->save();
     }
 
     public function update(Question $question, $request)

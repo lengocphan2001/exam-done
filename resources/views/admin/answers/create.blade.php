@@ -45,6 +45,17 @@
                                     </div>
                                 </div>
                             @endfor
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="sel1">Đáp án đúng</label>
+                                    <select class="form-control" id="sel1" name="answer">
+                                        @for ($i = 0, $c = 'A'; $i < Question::where('id', $data['question_id'])->first()->number_of_answers; $i++, $c++)
+                                            <option value="{{ $c }}">{{ $c }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Thêm câu trả lời</button>
@@ -56,4 +67,3 @@
         </div>
     </section>
 @endsection
-

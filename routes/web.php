@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\KindController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\ExamController as UserExamController;
 use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,5 +45,7 @@ Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(fu
     Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('admin/changePassword', [AuthController::class, 'changePassword'])->name('changePassword');
 });
+
+Route::resource('exam', UserExamController::class);
 
 

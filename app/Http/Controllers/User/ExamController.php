@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -12,7 +13,9 @@ class ExamController extends Controller
      */
     public function index()
     {
-        //
+        $data['exams'] = Exam::all();
+        
+        return view('user.exams.index')->with(['data' => $data]);
     }
 
     /**

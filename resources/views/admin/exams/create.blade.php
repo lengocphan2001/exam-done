@@ -38,31 +38,6 @@
                                         * {{ $errors->first('name') }}
                                     </div>
                                 @endif
-                                <div class="form-group">
-                                    <label for="sel1">Thời gian</label>
-                                    <input type="number" name="duration" class="form-control" />
-                                </div>
-                                @if ($errors->has('duration'))
-                                    <div class='text-danger mt-2'>
-                                        * {{ $errors->first('duration') }}
-                                    </div>
-                                @endif
-                                
-                                <div class="form-group">
-                                    <label for="sel1">Độ khó</label>
-                                    <select class="form-control" id="sel1" name="topic">
-                                        <option value="Dễ">Dễ</option>
-                                        <option value="Trung bình">Trung bình</option>
-                                        <option value="Khó">Khó</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="sel1">Số lượng câu hỏi</label>
-                                    <select class="form-control" id="sel1" name="number_of_questions">
-                                        <option value=25>25 câu</option>
-                                        <option value=30>30 câu</option>
-                                    </select>
-                                </div>
 
                             </div>
 

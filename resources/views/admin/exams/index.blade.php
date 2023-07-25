@@ -45,10 +45,6 @@
                                                         aria-label="Browser: activate to sort column ascending">
                                                         Tên bài thi</th>
                                                     <th tabindex="0" rowspan="1" colspan="1">
-                                                        Thời lượng thi</th>
-                                                    <th tabindex="0" rowspan="1" colspan="1">
-                                                        Độ khó</th>
-                                                    <th tabindex="0" rowspan="1" colspan="1">
                                                         Hành động</th>
 
                                                 </tr>
@@ -59,8 +55,6 @@
                                                         <td class="dtr-control sorting_1" tabindex="0">
                                                             {{ $loop->iteration }}</td>
                                                         <td>{{ $item->name }}</td>
-                                                        <td>{{ $item->duration }}</td>
-                                                        <td>{{ $item->topic }}</td>
                                                         <td>
                                                             <form action="{{ route('admin.exams.destroy', ['exam' => $item]) }}"
                                                                 method="POST">
@@ -92,8 +86,6 @@
                                                 <tr>
                                                     <th rowspan="1" colspan="1">STT</th>
                                                     <th rowspan="1" colspan="1">Tên bài thi</th>
-                                                    <th rowspan="1" colspan="1">Thời lượng thi</th>
-                                                    <th rowspan="1" colspan="1">Độ khó</th>
                                                     <th rowspan="1" colspan="1">Hành động</th>
                                                 </tr>
                                             </tfoot>

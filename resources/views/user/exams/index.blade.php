@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <h1 class="text-center text-white">ĐỀ THI SÁT HẠCH BẰNG LÁI XE A1 MỚI NHẤT NĂM 2023</h1>
 
-        <div class="row col-15 gx-5">
+        <div class="row col-15 gx-5 mt-5">
             <div class="col-md-5 col-sm-15 col-xs-15 card p-5">
                 <div class="panel panel-default hidden-sm hidden-xs">
                     <div class="panel-body">
@@ -56,22 +56,9 @@
                                 </div>
                                 <div>
                                     <strong style="font-size: 16px;">
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de1">Đề 1</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de2">Đề 2</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de3">Đề 3</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de4">Đề 4</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de5">Đề 5</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de6">Đề 6</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de7">Đề 7</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de8">Đề 8</button>
+                                    <a href=""></a>
+                                        <a type="submit" class="btn btn-success btn-thongtin" name="chondethi"
+                                            value="" href="">Đề 1</a>
                                     </strong>
                                 </div>
                             </div>
@@ -83,6 +70,10 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="user/js/main.js"></script>
+@endpush
 
 <style>
     [type=radio] {

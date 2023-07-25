@@ -15,9 +15,9 @@ class ExamService extends Service{
         $data = $request->all();
         return Exam::create([
             'name' => $data['name'],
-            'duration' => $data['duration'],
+            'duration' => 19,
             'topic' => $data['topic'],
-            'number_of_questions' => $data['number_of_questions'],
+            'number_of_questions' => 25,
         ]);
     }
 

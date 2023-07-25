@@ -12,14 +12,13 @@
     <title>Trang chủ</title>
 </head>
 
-<body class="text-black">
-
+<body style="height: auto">
 
     <header class="site-navbar" role="banner">
         <div class="container-fluid pl-5">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-5">
                 <div class="col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="{{ asset('dashboard') }}" class="text-white mb-0">Tên web</a></h1>
+                    <h1 class="mb-0 site-logo"><a href="{{ asset('dashboard') }}" class="text-primary mb-0">Tên web</a></h1>
                 </div>
                 <div class="col-md-9 d-none d-xl-block">
                     <nav class="site-navigation position-relative text-right" role="navigation">
@@ -50,20 +49,18 @@
                 </div>
 
 
-                <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a
+                {{-- <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a
                         href="{{ asset('#') }}" class="site-menu-toggle js-menu-toggle text-white"><span
-                            class="icon-menu h3"></span></a></div>
+                            class="icon-menu h3"></span></a></div> --}}
 
             </div>
 
         </div>
-        <div class="content">
+        <div class="content pb-5">
             @yield('content')
         </div>
 
     </header>
-    <div class="hero" style="background-image: url('user/images/hero_1.jpg');">
-        
     </div>
     
     
@@ -72,6 +69,8 @@
     <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('user/js/jquery.sticky.js') }}"></script>
     <script src="{{ asset('user/js/main.js') }}"></script>
+    @yield('script')
+        
 
 </body>
 

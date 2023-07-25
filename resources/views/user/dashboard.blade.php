@@ -2,15 +2,15 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center text-white">ĐỀ THI SÁT HẠCH BẰNG LÁI XE A1 MỚI NHẤT NĂM 2023</h1>
+        <h1 class="text-center text-primary">ĐỀ THI SÁT HẠCH BẰNG LÁI XE A1 MỚI NHẤT NĂM 2023</h1>
 
-        <div class="row col-15 gx-5">
+        <div class="row col-15 gx-5 mt-5">
             <div class="col-md-5 col-sm-15 col-xs-15 card p-5">
                 <div class="panel panel-default hidden-sm hidden-xs">
                     <div class="panel-body">
                         <h2>
                             <p style="text-align:center"><span
-                                    style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
+                                    style="color: black; font-family: arial, helvetica, sans-serif;"><strong
                                         class="text-success">PHẦN MỀM LUYỆN THI LÝ THUYẾT 200 CÂU A1</strong></span></p>
                         </h2>
                         <p style="text-align: center;"><img
