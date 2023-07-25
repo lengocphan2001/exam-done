@@ -21,14 +21,26 @@
     <div class="contatiner d-flex flex-row p-5 justify-content-center bg-primary">
         <form action="{{ route('exam.store') }}" enctype="multipart/form-data" method="post">
             @csrf
-            <div class="d-flex flex-row p-5 justify-content-center">
+            <div class="d-flex flex-row flex-wrap p-5 justify-content-center">
                 @foreach ($exam->questions as $item)
-                    <div class="card p-3">
+                    <div class="card p-3 w-50">
                         @php
                             $question = Question::where('id', $item->question_id)->first();
                         @endphp
                         <h3>{{ $question->name }}</h3>
+                        @if ($question->image)
+                            <div class="card-body">
+                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row col-sm-12">
+                                        <div class="col-sm-6 d-flex flex-row w-100">
+                                            <img class="rounded mx-auto d-block img-thumbnail" name="image"
+                                                src="{{ asset($question->image) }}" />
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         @php
                             $answers = $question->answers;
                         @endphp
@@ -36,18 +48,17 @@
                             @php
                                 $ans = $answers[$i];
                             @endphp
-                            <p>
-                                <input type="radio" id="test{{$item->id}}{{$ans->id}}" name="radio-group{{$item->id}}" value="{{$c}}">
-                                <label for="test{{$item->id}}{{$ans->id}}">{{$ans->answer}}</label>
+                            <p class="card f-flex flex-row p-2 justify-content-start bg-success align-items-start">
+                                <input type="radio" id="test{{ $item->id }}{{ $ans->id }}"
+                                    name="radio-group{{ $item->id }}" value="{{ $c }}">
+                                <label for="test{{ $item->id }}{{ $ans->id }}">{{ $ans->answer }}</label>
                             </p>
                         @endfor
-                        {{-- @foreach ($answers as $ans)
-                            
-                        @endforeach --}}
                     </div>
                 @endforeach
+                
             </div>
-            <button type="submit" class="">Nộp bài</button>
+            <button type="submit" class="btn btn-danger">Nộp bài</button>
         </form>
     </div>
 
@@ -68,6 +79,7 @@
     [type="radio"]:not(:checked)+label {
         position: relative;
         padding-left: 28px;
+        margin: 0;
         cursor: pointer;
         line-height: 20px;
         display: inline-block;
@@ -94,8 +106,8 @@
         height: 12px;
         background: #F87DA9;
         position: absolute;
-        top: 4px;
-        left: 4px;
+        top: 3px;
+        left: 3px;
         border-radius: 100%;
         -webkit-transition: all 0.2s ease;
         transition: all 0.2s ease;
