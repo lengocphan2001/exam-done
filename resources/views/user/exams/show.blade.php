@@ -19,7 +19,7 @@
 <body>
     <!-- QUIZ ONE -->
     <div class="contatiner d-flex flex-row p-5 justify-content-center bg-primary">
-        <form action="{{ route('exam.store') }}" enctype="multipart/form-data" method="post">
+        <form action="{{ route('exam.store', ['id'=> $exam->id]) }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="d-flex flex-row flex-wrap p-5 justify-content-center">
                 @foreach ($exam->questions as $item)
