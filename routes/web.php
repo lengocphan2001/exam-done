@@ -33,9 +33,6 @@ Route::get('dashboard', function(){
     return view('user.dashboard');
 })->name('dashboard');
 
-Route::get('exam', function(){
-    return view('user.exams.index');
-})->name('exam');
 
 Route::middleware(['middleware' => 'checkUserLogin'])->group(function (){
     Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');
@@ -54,5 +51,6 @@ Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(fu
     Route::get('admin/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('admin/changePassword', [AuthController::class, 'changePassword'])->name('changePassword');
 });
+Route::resource('exam', App\Http\Controllers\User\ExamController::class);
 
 

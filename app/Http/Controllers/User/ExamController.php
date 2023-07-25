@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -12,7 +13,8 @@ class ExamController extends Controller
      */
     public function index()
     {
-        //
+        $data['exams'] = Exam::all();
+        return view('user.exams.index')->with(['data' => $data]);
     }
 
     /**
@@ -28,15 +30,15 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Exam $exam)
     {
-        //
+        return view('user.exams.show')->with(['exam' => $exam]);
     }
 
     /**
@@ -52,7 +54,7 @@ class ExamController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
