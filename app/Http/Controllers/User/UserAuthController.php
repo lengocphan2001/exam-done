@@ -187,4 +187,14 @@ class UserAuthController extends Controller
 
         return redirect()->back();
     }
+
+    public function history()
+    {
+        if (Auth::check()) {
+            $data['exams'] = Auth::user()->examResults;
+            return view('user.auth.history')->with(['data' => $data]);
+        } else {
+            return redirect(route('login'));
+        }
+    }
 }

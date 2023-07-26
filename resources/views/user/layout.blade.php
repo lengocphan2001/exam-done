@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <title>Trang chủ</title>
 </head>
 
-<<<<<<< HEAD
-<body style="height: auto">
-=======
 <body class="text-black">
->>>>>>> 31643afcec698cabfc9907efe4d2f09608d3f8b3
 
     <header class="site-navbar" role="banner">
         <div class="container-fluid pl-5">

@@ -37,40 +37,74 @@ class ExamController extends Controller
     public function store(ExamRequest $request)
     {
         $data['title'] = 'Bài thi';
-        if (Question::all()->count() < 25) {
-            toastr()->error('Không đủ số lượng câu hỏi');
-            return back();
-        } else {
-            if (Question::where('is_paralysis', 1)->get()->count() < 1) {
-                toastr()->error('Không đủ số lượng câu hỏi điểm liệt');
-                return back();
-            } else if (Question::where('kind_id', 1)->get()->count() < 5) {
-                toastr()->error('Không đủ số lượng câu hỏi sa hình');
-                return back();
-            } else if (Question::where('kind_id', 2)->get()->count() < 5) {
-                toastr()->error('Không đủ số lượng câu hỏi biển báo');
-                return back();
-            } else if (Question::where('kind_id', 3)->get()->count() < 15) {
-                toastr()->error('Không đủ số lượng câu hỏi luật giao thông');
-                return back();
-            } else {
-                $data['exams'] = \App\Services\Admin\ExamService::getInstance()->getListExams();
-                $exam = \App\Services\Admin\ExamService::getInstance()->create($request);
-                if (!$exam) {
-                    return redirect()->back()->withInput();
-                }
-                $question = Question::where('kind_id', 1)->get()->random(min(Question::all()->count(), intval($exam->number_of_questions)));
-                foreach ($question as $question) {
-                    ExamQuestion::create([
-                        'exam_id' => $exam->id,
-                        'question_id' => $question->id
-                    ]);
-                };
-                // random 5 sa hình, 5 biển báo, 15 giao thông db
-                toastr()->success('Thêm bài thi thành công');
-                return redirect(route('admin.exams.index'))->with(['data', $data]);
-            }
+        // if (Question::all()->count() < 25) {
+        //     toastr()->error('Không đủ số lượng câu hỏi');
+        //     return back();
+        // } else {
+        //     if (Question::where([['is_paralysis', '=', 1], ['kind_id', '=', 1]])->get()->count() < 1) {
+        //         toastr()->error('Không đủ số lượng câu hỏi điểm liệt');
+        //         return back();
+        //     } else if (Question::where('kind_id', 1)->get()->count() < 5) {
+        //         toastr()->error('Không đủ số lượng câu hỏi sa hình');
+        //         return back();
+        //     } else if (Question::where('kind_id', 2)->get()->count() < 5) {
+        //         toastr()->error('Không đủ số lượng câu hỏi biển báo');
+        //         return back();
+        //     } else if (Question::where('kind_id', 3)->get()->count() < 15) {
+        //         toastr()->error('Không đủ số lượng câu hỏi luật giao thông');
+        //         return back();
+        //     } else {
+        //         $data['exams'] = \App\Services\Admin\ExamService::getInstance()->getListExams();
+        //         $exam = \App\Services\Admin\ExamService::getInstance()->create($request);
+        //         if (!$exam) {
+        //             return redirect()->back()->withInput();
+        //         }
+        //         $question = Question::where('kind_id', 1)->get()->random(5);
+        //         foreach ($question as $question) {
+        //             ExamQuestion::create([
+        //                 'exam_id' => $exam->id,
+        //                 'question_id' => $question->id
+        //             ]);
+        //         };
+        //         $question = Question::where('kind_id', 2)->get()->random(5);
+        //         foreach ($question as $question) {
+        //             ExamQuestion::create([
+        //                 'exam_id' => $exam->id,
+        //                 'question_id' => $question->id
+        //             ]);
+        //         };
+        //         $question = Question::where([['kind_id', '=', 3], ['is_paralysis', '!=', 3]])->get()->random(14);
+        //         foreach ($question as $question) {
+        //             ExamQuestion::create([
+        //                 'exam_id' => $exam->id,
+        //                 'question_id' => $question->id
+        //             ]);
+        //         };
+        //         $question = Question::where([['kind_id', '=', 3], ['is_paralysis', '=', 1]])->get()->random(1);
+        //         foreach ($question as $question) {
+        //             ExamQuestion::create([
+        //                 'exam_id' => $exam->id,
+        //                 'question_id' => $question->id
+        //             ]);
+        //         };
+        //         // random 5 sa hình, 5 biển báo, 15 giao thông db
+        //         toastr()->success('Thêm bài thi thành công');
+        //         return redirect(route('admin.exams.index'))->with(['data', $data]);
+        //     }
+        // }
+        $data['exams'] = \App\Services\Admin\ExamService::getInstance()->getListExams();
+        $exam = \App\Services\Admin\ExamService::getInstance()->create($request);
+        if (!$exam) {
+            return redirect()->back()->withInput();
         }
+        $question = Question::all()->random(5);
+        foreach ($question as $question) {
+            ExamQuestion::create([
+                'exam_id' => $exam->id,
+                'question_id' => $question->id
+            ]);
+        };
+        return redirect(route('admin.exams.index'))->with(['data', $data]);
     }
 
     /**

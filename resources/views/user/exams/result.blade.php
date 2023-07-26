@@ -2,75 +2,29 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1 class="text-center text-white">ĐỀ THI SÁT HẠCH BẰNG LÁI XE A1 MỚI NHẤT NĂM 2023</h1>
-
-        <div class="row col-15 gx-5 mt-5 algin-items-center">
-            <div class="col-md-5 col-sm-15 col-xs-15 card p-5">
+        <div class="row col-15 mt-5 flex d-flex flex-column justify-content-center align-items-center">
+            <div class="col-md-15 col-sm-15 col-xs-15 card p-5">
                 <div class="panel panel-default hidden-sm hidden-xs">
-                    <div class="panel-body">
+                    <div class="panel-body flex d-flex flex-column justify-content-center align-items-center">
                         <h2>
                             <p style="text-align:center"><span
                                     style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
-                                        class="text-success">PHẦN MỀM LUYỆN THI LÝ THUYẾT 200 CÂU A1</strong></span></p>
+                                        class="text-warning">Chúc mừng bạn đã hoàn thành bài thi</strong></span></p>
                         </h2>
                         <p style="text-align: center;"><img
                                 src="https://hoclaixemoto.com/image200/thi-bang-lai-xe-may-a1-online.jpg"></p>
-                        <span style="text-align: justify; font-size: 100%; font-family: arial, helvetica, sans-serif;">Phần
-                            mềm được phát triển dựa trên cấu trúc bộ đề thi sát hạch lý thuyết lái xe mô tô hạng A1 do Tổng
-                            Cục Đường Bộ Việt Nam quy định trong kỳ thi sát hạch chính thức.</span>
-                        <p style="text-align: justify;" class="text-success"><span
-                                style="font-family: arial, helvetica, sans-serif; font-size: 100%;">Để tập phần thi lý
-                                thuyết bằng lái xe A1 tốt nhất, các học viên có thể sử dụng trực tiếp những bộ đề thi này.
-                                Bởi
-                                chúng tôi đã tổng hợp đầy đủ 200 câu hỏi thi bằng lái xe máy A1 đã đánh dấu sẵn đáp án và
-                                câu hỏi điểm liệt.</span></p>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-7 col-sm-15 col-xs-15 card p-5">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h2 style="text-align:center; "><span style="color: #ff0000;"><strong class="text-success">BỘ ĐỀ THI
-                                    THỬ BẰNG LÁI XE MÁY A1</strong></span></h2>
-                        <div>
-                            <p style="text-align: justify;" class="text-primary">Cấu trúc bộ đề thi sát hạch giấy phép lái
-                                xe hạng A1 sẽ bao gồm
-                                <strong>25 câu hỏi</strong>, mỗi câu hỏi chỉ có <strong>duy nhất 1 đáp trả lời
-                                    đúng</strong>. Khác hẳn với bộ đề thi luật cũ là 2 đáp án. Mỗi đề thi chúng tôi sẽ bố
-                                trí từ <strong>2 - 4 câu hỏi điểm liệt</strong> để học viên có thể làm quen và ghi nhớ,
-                                tránh việc làm sai câu hỏi liệt.
-                            </p>
-                            <ul style="text-align: justify;">
-                                <li>Số lượng câu hỏi: <strong><span style="color: #ff0000;">25 Câu</span></strong>.</li>
-                                <li>Yêu cầu làm đúng <span style="color: #ff0000;"><strong>21/25 Câu</strong></span>.</li>
-                            </ul>
-                            <p style="text-align: justify;" class="text-danger"><strong>Lưu ý đặc biệt:</strong> <span
-                                    class="text-primary">Tuyệt đối không được làm sai câu hỏi điểm liệt, vì trong kỳ thi
-                                    thật nếu học viên làm sai "<strong class="text-danger">Câu Điểm Liệt</strong>" đồng
-                                    nghĩa với việc
-                                    "<strong class="text-warning">KHÔNG ĐẠT</strong>" dù cho các câu khác trả lời
-                                    đúng!</span></p>
-                            <div>
-                                <div style="margin-bottom:10px">
-                                    <strong style="font-size: 16px; color: red;">
-                                        Chọn đề thi để luyện:
-                                    </strong>
-                                </div>
-                                <div>
-                                    <strong style="font-size: 16px;">
-                                        @foreach ($data['exams'] as $item)
-                                            <a class="btn btn-success btn-thongtin" name="chondethi"
-                                                href="{{ route('exam.show', ['exam' => $item]) }}" value="Đề 1">Đề
-                                                {{ $loop->iteration }}</a>
-                                        @endforeach
-
-                                    </strong>
-                                </div>
-                            </div>
-
-                        </div>
+                        <span style="text-align: justify; font-size: 100%; font-family: arial, helvetica, sans-serif;">Bạn đạt được {{ $exam_result->correct_answer }} / 25 câu trả lời đúng</span>
+                        @if ($exam_result->correct_answer >= 21)
+                            <p style="text-align:center"><span
+                                    style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
+                                        class="text-success">Chúc mừng bạn đã vượt qua bài thi</strong></span></p>
+                        @else
+                            <p style="text-align:center"><span
+                                    style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
+                                        class="text-danger">Rất tiếc bạn chưa vượt qua bài thi</strong></span></p>
+                        @endif
+                        <a href="{{ route('history') }}" class="btn btn-danger">Xem thông tin chi tiết</a>
+                        
                     </div>
                 </div>
             </div>

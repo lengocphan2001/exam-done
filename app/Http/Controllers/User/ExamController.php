@@ -62,6 +62,8 @@ class ExamController extends Controller
             ]);
         }
 
+        return view('user.exams.result')->with(['exam_result' => $exam_result]);
+
     }
 
     /**
@@ -95,4 +97,5 @@ class ExamController extends Controller
     {
         //
     }
+
 }

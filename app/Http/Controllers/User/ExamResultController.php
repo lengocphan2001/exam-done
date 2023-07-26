@@ -37,7 +37,7 @@ class ExamResultController extends Controller
      */
     public function show(ExamResult $examResult)
     {
-        //
+        return view('user.exams.result')->with(['exam_result' => $examResult]);
     }
 
     /**

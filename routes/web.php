@@ -48,6 +48,10 @@ Route::resource('exam', App\Http\Controllers\User\ExamController::class)->except
 Route::post('/exam/{id}', [App\Http\Controllers\User\ExamController::class, 'store'])->name('exam.store');
 Route::resource('result', ExamResultController::class);
 Route::resource('resultquestion', ExamResultQuestionController::class);
+Route::get('/history', [UserAuthController::class, 'history'])->name('history');
+Route::get('/congratulation', function(){
+    return view('user.exams.result');
+});
 
 
 

@@ -16,7 +16,7 @@ class ExamService extends Service{
         return Exam::create([
             'name' => $data['name'],
             'duration' => 19,
-            'topic' => $data['topic'],
+            'topic' => 'Dễ',
             'number_of_questions' => 25,
         ]);
     }
