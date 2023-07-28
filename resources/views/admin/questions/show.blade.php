@@ -59,6 +59,13 @@
                                 <input class="form-control" id="exampleFormControlTextarea1" readonly
                                     value="{{ $data['question']->number_of_answers }}" />
                             </div>
+
+                            <div class="form-group">
+
+                                <label for="sel1">Giải thích</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" readonly
+                                    value="{{ $data['question']->note }}" />
+                            </div>
                             <div class="form-group">
 
                                 <label for="sel1">Đáp án đúng</label>

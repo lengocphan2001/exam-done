@@ -46,7 +46,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="paralysis">
                                     <label for="sel1">Điểm liệt</label>
                                     <select class="form-control" id="sel1" name="is_paralysis">
                                         <option value="1">Có</option>
@@ -62,7 +62,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Giải thích</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note"></textarea>
                                 </div>
                                 @if ($errors->has('note'))
@@ -91,11 +91,14 @@
 
 @push('script')
     <script>
+        $('#paralysis').hide();
         $('#kind').on('change', function() {
             if (this.value == 1 || this.value == 2) {
                 $('#question-image').show();
+                $('#paralysis').hide();
             } else {
                 $('#question-image').hide();
+                $('#paralysis').show();
             }
         });
     </script>

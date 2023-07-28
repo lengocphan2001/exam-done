@@ -33,7 +33,7 @@ class QuestionService extends Service
         return Question::create([
             'name' => $data['name'],
             'kind_id' => $data['kind_id'],
-            'is_paralysis' => $data['is_paralysis'] == "1" ? true : false,
+            'is_paralysis' => ($data['kind_id'] == "1" || $data['kind_id'] == 2) ? false : ($data['is_paralysis'] == "1" ? true : false),
             'number_of_answers' => $data['number_of_answers'],
             'image' => $file_path,
             'answer' => 'A',

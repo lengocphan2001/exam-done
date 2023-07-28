@@ -31,19 +31,26 @@
 
                             <li><a href="{{ asset('exam') }}"><span>Thi thử A1</span></a></li>
                             <li><a href="{{ asset('about.html') }}"><span>Thi 20 câu điểm liệt</span></a></li>
-                            <li><a href="{{ asset('blog.html') }}"><span>Lý thuyết</span></a></li>
+                            <li class="has-children">
+                                <a href="{{ asset('blog.html') }}"><span>Ôn tập</span></a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="{{ route('reviews.sahinh') }}">Sa hình</a></li>
+                                    <li><a href="{{ route('reviews.bienbao') }}">Biển báo giao thông</a></li>
+                                    <li><a href="{{ route('reviews.luat') }}">Luật giao thông</a></li>
+                                </ul>
+                            </li>
                             <li class="has-children">
                                 @if (Auth::user() && Auth::user()->isActive)
                                     <a href="{{ asset('#') }}"><span>{{ Auth::user()->name }}</span></a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="{{ asset('register') }}">Trang cá nhân</a></li>
-                                        <li><a href="{{ asset('logout') }}">Đăng xuất</a></li>
-                                        <li><a href="{{ asset('#') }}">Lịch sử thi</a></li>
+                                        <li><a href="{{ route('register') }}">Trang cá nhân</a></li>
+                                        <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                        <li><a href="{{ route('history') }}">Lịch sử thi</a></li>
                                     </ul>
                                 @else
-                                    <a href="{{ asset('login') }}"><span>Đăng nhập</span></a>
+                                    <a href="{{ route('login') }}"><span>Đăng nhập</span></a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="{{ asset('register') }}">Đăng ký</a></li>
+                                        <li><a href="{{ route('register') }}">Đăng ký</a></li>
                                     </ul>
                                 @endif
 

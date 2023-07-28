@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\ExamController as UserExamController;
 use App\Http\Controllers\User\ExamResultController;
 use App\Http\Controllers\User\ExamResultQuestionController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\UserAuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,10 @@ Route::get('/history', [UserAuthController::class, 'history'])->name('history');
 Route::get('/congratulation', function(){
     return view('user.exams.result');
 });
+
+Route::get('reviews/sahinh', [ReviewController::class, 'sahinh'])->name('reviews.sahinh');
+Route::get('reviews/bienbao', [ReviewController::class, 'bienbao'])->name('reviews.bienbao');
+Route::get('reviews/luat', [ReviewController::class, 'luat'])->name('reviews.luat');
 
 
 

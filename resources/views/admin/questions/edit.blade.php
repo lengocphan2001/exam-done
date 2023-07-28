@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Giải thích</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="note">{{ $data['question']->note }}</textarea>
                                 </div>
                                 @if ($errors->has('note'))

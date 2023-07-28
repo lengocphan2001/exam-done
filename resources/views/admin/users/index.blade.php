@@ -1,5 +1,6 @@
 @extends('admin.layout')
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -95,7 +96,7 @@
                                                                         class="fas fa-edit"></i></a>
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button class="btn btn-danger" type="submit"><i
+                                                                <button class="btn btn-danger" type="submit" onclick="return confirm('Bạn có chắc muốn xóa nhãn hàng?')"><i
                                                                         class="far fa-trash-alt"></i></button>
                                                             </form>
                                                         

@@ -8,24 +8,14 @@
 
 @section('content')
     <div class="container mt-5">
-        @php
-            $exam_result = ExamResult::where('id', $exam)->first();
-        @endphp
-        <h1 class="text-center text-white">{{ Exam::where('id', $exam_result->exam_id)->first()->name }}</h1>
+        <h1 class="text-center text-white">Ôn tập các câu hỏi sa hình</h1>
 
         <div class="row col-12 gx-5 mt-5 algin-items-center">
             <div class="col-md-12 col-sm-12 col-xs-12 card p-5">
                 <div class="panel panel-default hidden-sm hidden-xs">
                     <div class="panel-body">
-                        <h2 class="text-success text-center">Kết quả bài thi</h2>
-                        @php
-                            $exam_questions = $exam_result->examQuestions;
-                        @endphp
-                        @for ($i = 0; $i < 25; $i++)
-                            @php
-                                $question = Question::where('id', $exam_questions[$i]->question_id)->first();
-                            @endphp
-                            <h3>Câu {{ $i + 1}}: {{ $question->name }}</h3>
+                        @foreach ($questions as $question)
+                            <h3>Câu {{ $loop->iteration }}: {{ $question->name }}</h3>
                             @if ($question->image)
                                 <div class="card-body">
                                     <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -34,7 +24,6 @@
                                                 <img class="rounded mx-auto d-block img-thumbnail" name="image"
                                                     src="{{ asset($question->image) }}" />
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -48,13 +37,8 @@
                                 </p>
                             @endforeach
                             <p>Câu trả lời đúng là {{ $question->answer }}</p>
-                            @if ($exam_questions[$i]->is_true)
-                                <p class="text-success">Bạn trả lời đúng</p>
-                            @else
-                                <p class="text-danger">Bạn trả lời sai</p>
-                            @endif
                             <p class="text-warning">Giải thích: {{ $question->note }}</p>
-                        @endfor
+                        @endforeach
                     </div>
                 </div>
             </div>

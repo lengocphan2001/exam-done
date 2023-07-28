@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\ExamResult;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class ExamResultController extends Controller
 {
@@ -40,7 +40,8 @@ class ExamResultController extends Controller
         return view('user.exams.result')->with(['exam_result' => $examResult]);
     }
 
-    public function detail(ExamResult $examResult){
+    public function detail($examResult){
+
         return view('user.exams.detail')->with(['exam' => $examResult]);
     }
 

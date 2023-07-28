@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="row col-15 mt-5 flex d-flex flex-column justify-content-center align-items-center">
-            <div class="col-md-15 col-sm-15 col-xs-15 card p-5">
+        <div class="row col-12 mt-5 flex d-flex flex-column justify-content-center align-items-center">
+            <div class="col-md-12 col-sm-12 col-xs-12 card p-5">
                 <div class="panel panel-default hidden-sm hidden-xs">
                     <div class="panel-body flex d-flex flex-column justify-content-center align-items-center">
                         <table class="table table-striped">
@@ -34,17 +34,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.users.destroy', ['user' => $item]) }}"
-                                                method="POST">
-                                                <a class="btn btn-success"
-                                                    href="{{ route('admin.users.edit', ['user' => $item]) }}"><i
-                                                        class="fas fa-edit"></i></a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger" type="submit"><i
-                                                        class="far fa-trash-alt"></i></button>
-                                            </form>
-
+                                            <a class="btn btn-success"
+                                                href="{{ route('result.detail', ['exam' => $item]) }}"><i
+                                                    class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
