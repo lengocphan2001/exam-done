@@ -47,6 +47,7 @@ Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(fu
 Route::resource('exam', App\Http\Controllers\User\ExamController::class)->except('store');
 Route::post('/exam/{id}', [App\Http\Controllers\User\ExamController::class, 'store'])->name('exam.store');
 Route::resource('result', ExamResultController::class);
+Route::get('result/detail/{exam}', [ExamResultController::class, 'detail'])->name('result.detail');
 Route::resource('resultquestion', ExamResultQuestionController::class);
 Route::get('/history', [UserAuthController::class, 'history'])->name('history');
 Route::get('/congratulation', function(){

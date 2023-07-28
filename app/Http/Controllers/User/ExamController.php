@@ -35,34 +35,39 @@ class ExamController extends Controller
     public function store(Request $request, $id)
     {
         $data = $request->all();
+        // dd($data);
         $exam_result = ExamResult::create([
             'exam_id' => $id,
             'user_id' => Auth::check() ? Auth::user()->id : null,
             'correct_answer' => 0
         ]);
-        
+
         $exam = Exam::where('id', $id)->first();
         $questions = $exam->questions;
-        for ($i=0; $i < $exam->questions->count(); $i++) { 
-            $question_id = $questions[$i]->id;
+        for ($i = 0; $i < 25; $i++) {
+            $question_id = $questions[$i]->question_id;
             $question = Question::where('id', $question_id)->first();
-            
-            if ($request->get('radio-group'.$question->id) == $question->answer){
-                $exam_result->update([
-                    'correct_answer' => $exam_result->correct_answer + 1
-                ]);
 
-                $exam_result->save();
+            if ($request->get('radio-group' . $question->id)) {
+                if ($request->get('radio-group' . $question->id) == $question->answer) {
+                    $exam_result->update([
+                        'correct_answer' => $exam_result->correct_answer + 1
+                    ]);
+                    
+                    $exam_result->save();
+                }
                 
             }
             ExamResultQuestion::create([
                 'exam_result_id' => $exam_result->id,
                 'question_id' => $question->id,
-                'is_true' => $request->get('radio-group'.$question->id) == $question->answer ? true : false
+                'is_true' => $request->get('radio-group' . $question->id) == $question->answer ? true : false
             ]);
         }
+        // dd($exam_result->examQuestions);
+        
 
-        return view('user.exams.result')->with(['exam_result' => $exam_result]);
+        return view('user.exams.result')->with(['exam' => $exam_result]);
 
     }
 
@@ -87,7 +92,7 @@ class ExamController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
     }
 
     /**

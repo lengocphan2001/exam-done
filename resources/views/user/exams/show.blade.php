@@ -50,7 +50,7 @@
                             @endphp
                             <p class="card f-flex flex-row p-2 justify-content-start bg-success align-items-start">
                                 <input type="radio" id="test{{ $item->id }}{{ $ans->id }}"
-                                    name="radio-group{{ $item->id }}" value="{{ $c }}">
+                                    name="radio-group{{ $question->id }}" value="{{ $c }}">
                                 <label for="test{{ $item->id }}{{ $ans->id }}">{{ $ans->answer }}</label>
                             </p>
                         @endfor

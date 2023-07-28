@@ -14,4 +14,8 @@ class ExamResultQuestion extends Model
         'question_id',
         'is_true'
     ];
+
+    public function examResult(){
+        return $this->belongsTo(ExamResult::class);
+    }
 }

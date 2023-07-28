@@ -48,33 +48,7 @@
                                      class="text-primary">Tuyệt đối không được làm sai câu hỏi điểm liệt, vì trong kỳ thi
                                     thật nếu học viên làm sai "<strong class="text-danger">Câu Điểm Liệt</strong>" đồng nghĩa với việc
                                     "<strong class="text-warning">KHÔNG ĐẠT</strong>" dù cho các câu khác trả lời đúng!</span></p>
-                            <div>
-                                <div style="margin-bottom:10px">
-                                    <strong style="font-size: 16px; color: red;">
-                                        Chọn đề thi để luyện:
-                                    </strong>
-                                </div>
-                                <div>
-                                    <strong style="font-size: 16px;">
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de1">Đề 1</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de2">Đề 2</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de3">Đề 3</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de4">Đề 4</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de5">Đề 5</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de6">Đề 6</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de7">Đề 7</button>
-                                        <button type="submit" class="btn btn-success btn-thongtin" name="chondethi"
-                                            value="de8">Đề 8</button>
-                                    </strong>
-                                </div>
-                            </div>
+                        
                             
                         </div>
                     </div>

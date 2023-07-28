@@ -40,6 +40,10 @@ class ExamResultController extends Controller
         return view('user.exams.result')->with(['exam_result' => $examResult]);
     }
 
+    public function detail(ExamResult $examResult){
+        return view('user.exams.detail')->with(['exam' => $examResult]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

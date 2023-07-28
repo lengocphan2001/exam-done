@@ -13,8 +13,8 @@
                         </h2>
                         <p style="text-align: center;"><img
                                 src="https://hoclaixemoto.com/image200/thi-bang-lai-xe-may-a1-online.jpg"></p>
-                        <span style="text-align: justify; font-size: 100%; font-family: arial, helvetica, sans-serif;">Bạn đạt được {{ $exam_result->correct_answer }} / 25 câu trả lời đúng</span>
-                        @if ($exam_result->correct_answer >= 21)
+                        <span style="text-align: justify; font-size: 100%; font-family: arial, helvetica, sans-serif;">Bạn đạt được {{ $exam->correct_answer }} / 25 câu trả lời đúng</span>
+                        @if ($exam->correct_answer >= 21)
                             <p style="text-align:center"><span
                                     style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
                                         class="text-success">Chúc mừng bạn đã vượt qua bài thi</strong></span></p>
@@ -23,7 +23,7 @@
                                     style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><strong
                                         class="text-danger">Rất tiếc bạn chưa vượt qua bài thi</strong></span></p>
                         @endif
-                        <a href="{{ route('history') }}" class="btn btn-danger">Xem thông tin chi tiết</a>
+                        <a href="{{ route('result.detail', ['exam' => $exam]) }}" class="btn btn-danger">Xem thông tin chi tiết</a>
                         
                     </div>
                 </div>
