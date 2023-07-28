@@ -13,13 +13,26 @@
     <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
+    <script src="{{ asset('user/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('user/js/popper.min.js') }}"></script>
+    <script src="{{ asset('user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('user/js/jquery-backward-timer.min.js') }}"></script>
+    <script src="{{ asset('user/js/jquery-backward-timer.src.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}"></script>
     <title>Document</title>
 </head>
 
 <body>
     <!-- QUIZ ONE -->
     <div class="contatiner d-flex flex-row p-5 justify-content-center bg-primary">
-        <form action="{{ route('exam.store', ['id'=> $exam->id]) }}" enctype="multipart/form-data" method="post">
+        <div class='timer_block'
+            style="margin: 0em;
+                left: 0em; top: 0em; background: yellow;
+                    position: fixed;">
+            <h2 id='timer_0' class='timer font-weight-bold'>value placeholder</h2>
+        </div>
+        <form action="{{ route('exam.store', ['id' => $exam->id]) }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="d-flex flex-row flex-wrap p-5 justify-content-center">
                 @foreach ($exam->questions as $item)
@@ -56,9 +69,9 @@
                         @endfor
                     </div>
                 @endforeach
-                
+
             </div>
-            <button type="submit" class="btn btn-danger">Nộp bài</button>
+            <button type="submit" class="btn btn-danger" id="btn-submit">Nộp bài</button>
         </form>
     </div>
 
@@ -125,5 +138,19 @@
         transform: scale(1);
     }
 </style>
+
+
+<script>
+    $(document).ready(function() {
+        $('#timer_0').backward_timer({
+            seconds: 1140
+        });
+        $('#timer_0').backward_timer('start');
+        setTimeout(() => {
+            alert('Bạn đã hết giờ làm bài');
+            $('#btn-submit').click();
+        }, 1140000);
+    });
+</script>
 
 </html>
