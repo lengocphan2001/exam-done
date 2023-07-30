@@ -30,6 +30,8 @@ Route::get('dashboard', function(){
 
 Route::middleware(['middleware' => 'checkUserLogin'])->group(function (){
     Route::get('logout', [UserAuthController::class, 'logout'])->name('logout');
+    Route::get('profile', [UserAuthController::class, 'profile'])->name('profile');
+    Route::put('update', [UserAuthController::class, 'update'])->name('update');
 });
 Route::name('admin.')->middleware(['middleware' => 'checkAdminLogin'])->group(function () {
     Route::get('/', function () {

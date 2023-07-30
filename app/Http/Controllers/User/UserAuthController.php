@@ -22,58 +22,6 @@ class UserAuthController extends Controller
         return view('user.dashboard')->with(['data', $data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-    public function profile()
-    {
-        return view('user.auth.profile');
-    }
-
     public function loginForm()
     {
         if (Auth::check()) {
@@ -135,8 +83,6 @@ class UserAuthController extends Controller
 
     public function login(Request $request)
     {
-
-
         $request->validate(
             [
                 'email' => 'required|email',
@@ -195,6 +141,59 @@ class UserAuthController extends Controller
             return view('user.auth.history')->with(['data' => $data]);
         } else {
             return redirect(route('login'));
+        }
+    }
+
+    public function profile()
+    {
+        $data['user'] = Auth::user();
+
+        return view('user.auth.profile')->with(['data' => $data]);
+    }
+
+    public function update(Request $request)
+    {
+        // dd($request->all());
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+            ],
+            [
+                'name.required' => 'Họ tên là trường bắt buộc',
+                'email.required' => 'Email là trường bắt buộc',
+                'email.email' => 'Email không đúng định dạng',
+            ]
+        );
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first();
+        if ($request->get('password')) {
+        }
+        $password = $request->get('password');
+        if (!$password) {
+            $user->update([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'address' => $request->get('address'),
+                'phone' => $request->get('phone'),
+            ]);
+            toastr()->success('Thay đổi thông tin thành công');
+            return back();
+        } else {
+            if (strlen($password) < 6) {
+                toastr()->error('Mật khẩu phải có ít nhất 6 ký tự');
+                return back();
+            } else {
+                $user->update([
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'address' => $request->get('address'),
+                    'phone' => $request->get('phone'),
+                    'password' => Hash::make($request->get('password'))
+                ]);
+                toastr()->success('Thay đổi thông tin thành công');
+                return back();
+            }
         }
     }
 }

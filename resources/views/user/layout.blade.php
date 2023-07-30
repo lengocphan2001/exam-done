@@ -43,7 +43,7 @@
                                 @if (Auth::user() && Auth::user()->isActive)
                                     <a href="{{ asset('#') }}"><span>{{ Auth::user()->name }}</span></a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="{{ route('register') }}">Trang cá nhân</a></li>
+                                        <li><a href="{{ route('profile') }}">Trang cá nhân</a></li>
                                         <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                                         <li><a href="{{ route('history') }}">Lịch sử thi</a></li>
                                     </ul>
@@ -58,11 +58,6 @@
                         </ul>
                     </nav>
                 </div>
-
-
-                {{-- <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a
-                        href="{{ asset('#') }}" class="site-menu-toggle js-menu-toggle text-white"><span
-                            class="icon-menu h3"></span></a></div> --}}
 
             </div>
 
