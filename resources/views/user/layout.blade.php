@@ -30,7 +30,6 @@
                             <li class="active"><a href="{{ asset('dashboard') }}"><span>Trang chủ</span></a></li>
 
                             <li><a href="{{ asset('exam') }}"><span>Thi thử A1</span></a></li>
-                            <li><a href="{{ asset('about.html') }}"><span>Thi 20 câu điểm liệt</span></a></li>
                             <li class="has-children">
                                 <a href="{{ asset('blog.html') }}"><span>Ôn tập</span></a>
                                 <ul class="dropdown arrow-top">
