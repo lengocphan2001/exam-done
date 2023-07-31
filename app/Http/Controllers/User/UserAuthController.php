@@ -41,7 +41,7 @@ class UserAuthController extends Controller
         $request->validate(
             [
                 'email' => 'required|email|unique:users',
-                'password' => 'required|min:6',
+                'password' => 'required|min:8',
                 'name' => 'required|min:6',
                 'phone' => 'required|min:10|max:11',
                 'address' => 'required'
@@ -51,7 +51,7 @@ class UserAuthController extends Controller
                 'email.email' => 'Email không đúng định dạng',
                 'email.unique' => 'Email đã có người sử dụng',
                 'password.required' => 'Mật khẩu là trường bắt buộc',
-                'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
+                'password.min' => 'Mật khẩu phải chứa ít nhất 8 ký tự',
                 'name.required' => 'Họ tên là trường bắt buộc',
                 'name.min' => 'Họ tên phải chứa ít nhất 6 ký tự',
                 'phone.required' => 'Số điện thoại là trường bắt buộc',
@@ -86,13 +86,13 @@ class UserAuthController extends Controller
         $request->validate(
             [
                 'email' => 'required|email',
-                'password' => 'required|min:6'
+                'password' => 'required|min:8'
             ],
             [
                 'email.required' => 'Email là trường bắt buộc',
                 'email.email' => 'Email không đúng định dạng',
                 'password.required' => 'Mật khẩu là trường bắt buộc',
-                'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
+                'password.min' => 'Mật khẩu phải chứa ít nhất 8 ký tự',
             ]
         );
 
@@ -180,8 +180,8 @@ class UserAuthController extends Controller
             toastr()->success('Thay đổi thông tin thành công');
             return back();
         } else {
-            if (strlen($password) < 6) {
-                toastr()->error('Mật khẩu phải có ít nhất 6 ký tự');
+            if (strlen($password) < 8) {
+                toastr()->error('Mật khẩu phải có ít nhất 8 ký tự');
                 return back();
             } else {
                 $user->update([

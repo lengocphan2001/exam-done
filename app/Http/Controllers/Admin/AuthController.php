@@ -81,7 +81,7 @@ class AuthController extends Controller
     public function login(Request $request){
         $rules = [
             'email' =>'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:8'
         ];
         $messages = [
             'email.required' => 'Email là trường bắt buộc',
