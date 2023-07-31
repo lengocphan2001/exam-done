@@ -30,17 +30,18 @@
             style="margin: 0em;
                 left: 0em; top: 0em; background: yellow;
                     position: fixed;">
-            <h2 id='timer_0' class='timer font-weight-bold'>value placeholder</h2>
         </div>
         <form action="{{ route('exam.store', ['id' => $exam->id]) }}" enctype="multipart/form-data" method="post">
             @csrf
+            <input id='timer_0' class='timer font-weight-bold' name="time" readonly />
             <div class="d-flex flex-row flex-wrap p-5 justify-content-center">
                 @foreach ($exam->questions as $item)
                     <div class="card p-3 w-50">
                         @php
                             $question = Question::where('id', $item->question_id)->first();
                         @endphp
-                        <h3>{{ $question->name }}</h3>
+                        
+                        <h3>Câu {{ $loop->iteration }}: {{ $question->name }}</h3>
                         @if ($question->image)
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">

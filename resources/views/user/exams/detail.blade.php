@@ -26,6 +26,9 @@
                                 $question = Question::where('id', $exam_questions[$i]->question_id)->first();
                             @endphp
                             <h3>Câu {{ $i + 1}}: {{ $question->name }}</h3>
+                            @if ($question->is_paralysis == 1)
+                                <p class="text-danger">* Câu điểm liệt</p>
+                            @endif
                             @if ($question->image)
                                 <div class="card-body">
                                     <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">

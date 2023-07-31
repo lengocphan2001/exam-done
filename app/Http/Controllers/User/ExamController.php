@@ -35,7 +35,7 @@ class ExamController extends Controller
     public function store(Request $request, $id)
     {
         $data = $request->all();
-        // dd($data);
+        dd($data);
         $exam_result = ExamResult::create([
             'exam_id' => $id,
             'user_id' => Auth::check() ? Auth::user()->id : null,

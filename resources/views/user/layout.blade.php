@@ -22,7 +22,7 @@
         <div class="container-fluid pl-5">
             <div class="row align-items-center mb-5">
                 <div class="col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="{{ asset('dashboard') }}" class="text-primary mb-0">Tên web</a></h1>
+                    <h1 class="mb-0 site-logo"><a href="{{ asset('dashboard') }}" class="text-primary mb-0">Lái xe A1</a></h1>
                 </div>
                 <div class="col-md-9 d-none d-xl-block">
                     <nav class="site-navigation position-relative text-right" role="navigation">

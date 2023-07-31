@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('answer')->default('A');
             $table->string('image')->nullable();
             $table->string('note');
+            $table->foreign('kind_id')->references('id')->on('kinds')->onDelete('cascade');
             $table->timestamps();
         });
     }
